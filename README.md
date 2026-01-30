@@ -2,6 +2,8 @@
 
 Welcome to the CSS Insurance Enterprise UX Platform - a comprehensive design system and UX architecture for building modern, accessible enterprise applications.
 
+> **🎯 For CSS Developers**: See the [CSS Quick Reference](./docs/css-quick-reference.md) and [Live Demo](./docs/demo.html) to get started immediately!
+
 ## 🎯 Purpose
 
 This platform provides everything needed to build consistent, accessible, and scalable applications for CSS Insurance:
@@ -12,6 +14,33 @@ This platform provides everything needed to build consistent, accessible, and sc
 - **Business Patterns**: Insurance-specific UX patterns
 - **Accessibility**: Built-in WCAG AA compliance
 - **Integration**: Design-to-code pipeline
+
+## ⚡ Quick Start (5 Minutes)
+
+### Step 1: Open the Live Demo
+Open `docs/demo.html` in your browser to see the design system in action!
+
+### Step 2: Import Design Tokens
+```html
+<link rel="stylesheet" href="design-tokens/tokens.css">
+```
+
+### Step 3: Use CSS Variables
+```css
+.my-component {
+  color: var(--color-text-primary);
+  background: var(--color-surface-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+}
+```
+
+### Step 4: Build Components
+```html
+<button class="btn btn-primary">Click Me</button>
+```
+
+**That's it!** Check the [Getting Started Guide](./docs/getting-started.md) for more details.
 
 ## 🚀 Quick Start for Developers
 
