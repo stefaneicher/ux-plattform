@@ -1,0 +1,210 @@
+/**
+ * CSS Insurance Design Tokens
+ * Generated from tokens.json
+ * Version: 1.0.0
+ * 
+ * Usage:
+ * Import this file and use CSS custom properties (variables)
+ * Example: color: var(--color-primary-500);
+ */
+
+:root {
+  /* Brand Colors - Primary */
+  --color-primary-50: #e8f2ff;
+  --color-primary-100: #c5e0ff;
+  --color-primary-200: #9eccff;
+  --color-primary-300: #77b8ff;
+  --color-primary-400: #50a4ff;
+  --color-primary-500: #2990ff;
+  --color-primary-600: #0070f0;
+  --color-primary-700: #0056d6;
+  --color-primary-800: #0042bd;
+  --color-primary-900: #002a95;
+
+  /* Brand Colors - Secondary */
+  --color-secondary-50: #f0f9ff;
+  --color-secondary-100: #d9f0ff;
+  --color-secondary-200: #b3e0ff;
+  --color-secondary-300: #80cbff;
+  --color-secondary-400: #4db3ff;
+  --color-secondary-500: #1a9aff;
+  --color-secondary-600: #0080ff;
+  --color-secondary-700: #0066cc;
+  --color-secondary-800: #004d99;
+  --color-secondary-900: #003366;
+
+  /* Semantic Colors */
+  --color-success-50: #e8f8f2;
+  --color-success-500: #10b981;
+  --color-success-700: #047857;
+  
+  --color-warning-50: #fff8e1;
+  --color-warning-500: #f59e0b;
+  --color-warning-700: #c77700;
+  
+  --color-error-50: #fef2f2;
+  --color-error-500: #ef4444;
+  --color-error-700: #b91c1c;
+  
+  --color-info-50: #eff6ff;
+  --color-info-500: #3b82f6;
+  --color-info-700: #1d4ed8;
+
+  /* Neutral Colors */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+  --color-neutral-1000: #000000;
+
+  /* Text Colors */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-disabled: var(--color-neutral-400);
+  --color-text-on-primary: var(--color-neutral-0);
+  --color-text-on-dark: var(--color-neutral-0);
+  --color-text-link: var(--color-primary-600);
+
+  /* Surface Colors */
+  --color-surface-primary: var(--color-neutral-0);
+  --color-surface-secondary: var(--color-neutral-50);
+  --color-surface-tertiary: var(--color-neutral-100);
+  --color-surface-overlay: rgba(0, 0, 0, 0.5);
+
+  /* Border Colors */
+  --color-border-default: var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-subtle: var(--color-neutral-100);
+
+  /* Typography */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-monospace: 'Fira Code', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;       /* 16px - base */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  --spacing-4xl: 6rem;     /* 96px */
+
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-full: 9999px;
+
+  /* Elevation (Shadows) */
+  --elevation-none: none;
+  --elevation-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --elevation-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --elevation-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --elevation-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --elevation-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --elevation-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* Motion - Durations */
+  --duration-instant: 50ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+
+  /* Motion - Easing */
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-enter: cubic-bezier(0, 0, 0.2, 1);
+  --easing-exit: cubic-bezier(0.4, 0, 1, 1);
+  --easing-linear: linear;
+
+  /* Z-Index Layers */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+  /* Breakpoints (for reference in media queries) */
+  --breakpoint-mobile: 320px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1280px;
+  --breakpoint-ultra: 1920px;
+}
+
+/* Base typography setup */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-primary);
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--font-size-5xl); }
+h2 { font-size: var(--font-size-4xl); }
+h3 { font-size: var(--font-size-3xl); }
+h4 { font-size: var(--font-size-2xl); }
+h5 { font-size: var(--font-size-xl); }
+h6 { font-size: var(--font-size-lg); }
+
+/* Link styles */
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--easing-standard);
+}
+
+a:hover {
+  color: var(--color-primary-700);
+}
+
+/* Code styles */
+code, pre {
+  font-family: var(--font-family-monospace);
+  font-size: var(--font-size-sm);
+}
