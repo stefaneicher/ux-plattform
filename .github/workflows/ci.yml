@@ -12,6 +12,10 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: read
+      actions: read
+    
     strategy:
       matrix:
         node-version: [18.x, 20.x]
@@ -51,6 +55,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-and-test
     
+    permissions:
+      contents: read
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -73,6 +80,9 @@ jobs:
   code-quality:
     name: Code Quality
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
