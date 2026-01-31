@@ -314,7 +314,7 @@ npm audit fix
 
 ## 🤝 Getting Help
 
-- **Documentation:** Check [docs/](./README.md) folder
+- **Documentation:** Check the docs folder
 - **Issues:** https://github.com/stefaneicher/ux-platform/issues
 - **Discussions:** https://github.com/stefaneicher/ux-platform/discussions
 - **Maintainer:** @stefaneicher

@@ -8,6 +8,10 @@
 const fs = require('fs');
 const path = require('path');
 
+// Configuration
+const COMPANY_NAME = 'CSS Insurance';
+const PLATFORM_NAME = 'Enterprise UX Platform';
+
 const OUTPUT_DIR = path.join(__dirname, '../dist/storybook');
 const TOKENS_PATH = path.join(__dirname, '../dist/tokens.css');
 
@@ -30,7 +34,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise UX Platform - Storybook</title>
+  <title>${PLATFORM_NAME} - Storybook</title>
   <style>
     ${cssTokens}
     
@@ -163,8 +167,8 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
   <div class="container">
-    <h1>🎨 Enterprise UX Platform</h1>
-    <p><strong>State-of-the-art Design System for CSS Insurance (2026)</strong></p>
+    <h1>🎨 ${PLATFORM_NAME}</h1>
+    <p><strong>State-of-the-art Design System for ${COMPANY_NAME} (2026)</strong></p>
     
     <div>
       <span class="badge badge-primary">Design Tokens</span>
@@ -236,7 +240,7 @@ const html = `<!DOCTYPE html>
     </ul>
     
     <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-neutral-200, #DEE2E6); color: var(--color-neutral-500, #6C757D); font-size: var(--typography-fontSize-sm, 0.875rem);">
-      Built with ❤️ for CSS Insurance | Generated: ${new Date().toISOString()}
+      Built with ❤️ for ${COMPANY_NAME} | Generated: ${new Date().toISOString()}
     </p>
   </div>
 </body>
