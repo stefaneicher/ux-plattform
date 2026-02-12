@@ -1,0 +1,76 @@
+# Render.com Blueprint Configuration
+# This file is automatically detected by Render.com and configures the deployment
+# https://render.com/docs/blueprint-spec
+
+[env]
+# Global environment variables can be set here
+
+[[services]]
+type = "web"
+name = "ux-platform-frontend"
+env = "docker"
+region = "frankfurt"
+plan = "starter"
+dockerfilePath = "./frontend/Dockerfile"
+dockerContext = "./frontend"
+healthCheckPath = "/health"
+
+  [[services.envVars]]
+  key = "NODE_ENV"
+  value = "production"
+
+  # Routing configuration for SPA
+  [[services.routes]]
+  type = "rewrite"
+  source = "/*"
+  destination = "/index.html"
+
+[[services]]
+type = "web"
+name = "ux-platform-backend"
+env = "docker"
+region = "frankfurt"
+plan = "starter"
+dockerfilePath = "./backend/Dockerfile"
+dockerContext = "./backend"
+healthCheckPath = "/health"
+
+  [[services.envVars]]
+  key = "PORT"
+  value = "3000"
+
+  [[services.envVars]]
+  key = "NODE_ENV"
+  value = "production"
+
+  [[services.envVars]]
+  key = "MONGODB_URI"
+  fromDatabase = "mongodb"
+
+  [[services.envVars]]
+  key = "REDIS_HOST"
+  fromService = "redis"
+  property = "host"
+
+  [[services.envVars]]
+  key = "REDIS_PORT"
+  fromService = "redis"
+  property = "port"
+
+  [[services.envVars]]
+  key = "CORS_ORIGIN"
+  sync = false
+
+[[services]]
+type = "redis"
+name = "redis"
+region = "frankfurt"
+plan = "free"
+maxmemoryPolicy = "noeviction"
+ipAllowList = []
+
+[[databases]]
+name = "mongodb"
+region = "frankfurt"
+plan = "free"
+databaseName = "insurance"
