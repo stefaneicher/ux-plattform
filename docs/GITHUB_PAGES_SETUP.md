@@ -4,11 +4,13 @@ This guide explains how to configure GitHub Pages for the UX Platform documentat
 
 ## ✅ Quick Setup (Required Once)
 
+> ⚠️ **Deployment failing with 404 error?** See the [Troubleshooting Guide](../GITHUB_PAGES_TROUBLESHOOTING.md) for detailed help.
+
 ### Step 1: Enable GitHub Actions as Source
 
 1. Go to your repository settings:
    ```
-   https://github.com/stefaneicher/ux-platform/settings/pages
+   https://github.com/stefaneicher/ux-plattform/settings/pages
    ```
 
 2. Under **"Build and deployment"** section:
