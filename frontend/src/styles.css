@@ -1,0 +1,21 @@
+@import '../../libs/design-tokens/tokens.json';
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Material Theme */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';

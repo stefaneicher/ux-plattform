@@ -1,0 +1,63 @@
+@startuml Domain Model - Offers
+
+package "Offers Bounded Context" {
+  
+  class Offer <<Aggregate Root>> {
+    - _id: ObjectId
+    - customerId: string
+    - customerName: string
+    - insuranceType: InsuranceType
+    - coverageAmount: number
+    - deductible: number
+    - calculatedPremium: number
+    - riskFactor: number
+    - status: OfferStatus
+    - validUntil: Date
+    - additionalData: object
+    - notes: string
+    - createdAt: Date
+    - updatedAt: Date
+    --
+    + calculate(): void
+    + send(): void
+    + accept(): void
+    + reject(): void
+    + expire(): void
+  }
+
+  enum InsuranceType {
+    HEALTH
+    LIFE
+    PROPERTY
+    VEHICLE
+    LIABILITY
+  }
+
+  enum OfferStatus {
+    DRAFT
+    CALCULATED
+    SENT
+    ACCEPTED
+    REJECTED
+    EXPIRED
+  }
+
+  class PremiumCalculator <<Service>> {
+    + calculatePremium(offer: Offer): Premium
+    + assessRisk(offer: Offer): RiskFactor
+  }
+
+  class OfferRepository <<Repository>> {
+    + save(offer: Offer): Offer
+    + findById(id: string): Offer
+    + findAll(): Offer[]
+    + delete(id: string): void
+  }
+
+  Offer --> InsuranceType
+  Offer --> OfferStatus
+  PremiumCalculator ..> Offer : calculates
+  OfferRepository ..> Offer : persists
+}
+
+@enduml

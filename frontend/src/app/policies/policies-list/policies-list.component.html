@@ -1,0 +1,55 @@
+<div class="page-header">
+  <h1>Policen</h1>
+  <button mat-raised-button color="primary" routerLink="/policies/new">
+    <mat-icon>add</mat-icon>
+    Neue Police
+  </button>
+</div>
+
+<mat-card>
+  <mat-card-content>
+    <table mat-table [dataSource]="policies" class="full-width-table">
+      <ng-container matColumnDef="policyNumber">
+        <th mat-header-cell *matHeaderCellDef>Policen-Nr.</th>
+        <td mat-cell *matCellDef="let policy">{{ policy.policyNumber }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerName">
+        <th mat-header-cell *matHeaderCellDef>Kunde</th>
+        <td mat-cell *matCellDef="let policy">{{ policy.customerName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="insuranceType">
+        <th mat-header-cell *matHeaderCellDef>Versicherungstyp</th>
+        <td mat-cell *matCellDef="let policy">{{ policy.insuranceType }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="premium">
+        <th mat-header-cell *matHeaderCellDef>Prämie</th>
+        <td mat-cell *matCellDef="let policy">CHF {{ policy.premium | number:'1.2-2' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let policy">
+          <mat-chip [color]="getStatusColor(policy.status)">{{ policy.status }}</mat-chip>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Aktionen</th>
+        <td mat-cell *matCellDef="let policy">
+          <button mat-icon-button>
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
