@@ -27,6 +27,7 @@ Generate:
 
 ### Token Categories
 - Colors (semantic + brand)
+- 
 - Typography scale
 - Spacing scale
 - Radius

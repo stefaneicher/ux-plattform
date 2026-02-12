@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build:tokens && npm run build:storybook",
     "build:tokens": "node scripts/build-tokens.js",
-    "build:storybook": "mkdir -p dist/storybook && node scripts/build-storybook.js",
+    "build:storybook": "node scripts/build-storybook.js",
     "test": "echo 'Running tests...' && echo '✓ All tests passed'",
     "lint": "echo 'Running linter...' && echo '✓ Linting passed'",
     "deploy": "npm run build && echo '✓ Ready for deployment'"

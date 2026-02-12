@@ -137,52 +137,52 @@ const html = `<!DOCTYPE html>
     <div class="section">
       <h2><span class="material-icons">palette</span> Design Tokens - Farben</h2>
       <div class="token-grid">
-        ${Object.entries(tokens.color).map(([key, value]) => `
-          <div class="token-item">
+        ${Object.entries(tokens.color).map(([key, value]) => {
+          return `<div class="token-item">
             <div class="token-name">color.${key}</div>
             <div class="token-value">${value}</div>
             <div class="color-swatch" style="background-color: ${value}"></div>
-          </div>
-        `).join('')}
+          </div>`;
+        }).join('')}
       </div>
     </div>
 
     <div class="section">
       <h2><span class="material-icons">straighten</span> Design Tokens - Spacing (8pt Grid)</h2>
       <div class="token-grid">
-        ${Object.entries(tokens.spacing).map(([key, value]) => `
-          <div class="token-item">
+        ${Object.entries(tokens.spacing).map(([key, value]) => {
+          return `<div class="token-item">
             <div class="token-name">spacing.${key}</div>
             <div class="token-value">${value}</div>
             <div class="spacing-demo" style="width: ${value}"></div>
-          </div>
-        `).join('')}
+          </div>`;
+        }).join('')}
       </div>
     </div>
 
     <div class="section">
       <h2><span class="material-icons">text_fields</span> Design Tokens - Typografie</h2>
       <div class="token-grid">
-        ${Object.entries(tokens.typography.fontSize).map(([key, value]) => `
-          <div class="token-item">
+        ${Object.entries(tokens.typography.fontSize).map(([key, value]) => {
+          return `<div class="token-item">
             <div class="token-name">typography.fontSize.${key}</div>
             <div class="token-value">${value}</div>
             <div style="font-size: ${value}; margin-top: 0.5rem;">Sample Text</div>
-          </div>
-        `).join('')}
+          </div>`;
+        }).join('')}
       </div>
     </div>
 
     <div class="section">
       <h2><span class="material-icons">crop_square</span> Design Tokens - Border Radius</h2>
       <div class="token-grid">
-        ${Object.entries(tokens.borderRadius).map(([key, value]) => `
-          <div class="token-item">
+        ${Object.entries(tokens.borderRadius).map(([key, value]) => {
+          return `<div class="token-item">
             <div class="token-name">borderRadius.${key}</div>
             <div class="token-value">${value}</div>
             <div style="width: 60px; height: 60px; background: #1976d2; border-radius: ${value}; margin-top: 0.5rem;"></div>
-          </div>
-        `).join('')}
+          </div>`;
+        }).join('')}
       </div>
     </div>
 
