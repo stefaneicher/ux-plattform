@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/stefaneicher/ux-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/stefaneicher/ux-platform/actions/workflows/ci.yml)
 [![Deploy Storybook](https://github.com/stefaneicher/ux-platform/actions/workflows/deploy.yml/badge.svg)](https://github.com/stefaneicher/ux-platform/actions/workflows/deploy.yml)
+[![Build and Release](https://github.com/stefaneicher/ux-platform/actions/workflows/release.yml/badge.svg)](https://github.com/stefaneicher/ux-platform/actions/workflows/release.yml)
 
 **Full-Stack Insurance Demo Application mit DDD-Architektur**
 
@@ -413,9 +414,55 @@ Beiträge sind willkommen! Bitte lies unseren [Contributing Guide](./CONTRIBUTIN
 
 ### DevOps
 - **CI/CD**: GitHub Actions
-- **Deployment**: GitHub Pages (Design System)
-- **Containerization**: Docker-ready
+- **Deployment**: 
+  - GitHub Pages (Design System/Storybook)
+  - Render.com (Production - Docker-based)
+  - GitHub Container Registry (Docker Images)
+- **Containerization**: Docker + docker-compose
 - **Monitoring**: Logging framework-ready
+- **Release Management**: Automated via GitHub Releases
+
+## 🚀 Deployment & Releases
+
+### Production Deployment (Render.com)
+
+**Quick Start:**
+
+```bash
+# 1. Erstelle ein Release auf GitHub
+gh release create v1.0.0 \
+  --title "Version 1.0.0 - Initial Release" \
+  --notes "Production release"
+
+# 2. GitHub Actions baut automatisch Docker Images
+# 3. Images werden zu ghcr.io gepusht
+# 4. Render.com deployed automatisch
+
+# Verify deployment
+curl https://your-app.onrender.com/health
+```
+
+**Docker Images:**
+- Frontend: `ghcr.io/stefaneicher/ux-plattform-frontend:latest`
+- Backend: `ghcr.io/stefaneicher/ux-plattform-backend:latest`
+
+**Dokumentation:**
+- 📖 [Release Guide](./RELEASE_GUIDE.md) - Wie man Releases erstellt
+- 📖 [Deployment Guide](./DEPLOYMENT_GUIDE.md) - Deployment Optionen
+- 📖 [Changelog](./CHANGELOG.md) - Version History
+
+### Lokale Entwicklung mit Docker
+
+```bash
+# Komplette Application starten
+docker-compose up -d
+
+# Services verfügbar auf:
+# Frontend: http://localhost:4200
+# Backend: http://localhost:3000
+# MongoDB: localhost:27017
+# Redis: localhost:6379
+```
 
 ## 📈 Roadmap
 

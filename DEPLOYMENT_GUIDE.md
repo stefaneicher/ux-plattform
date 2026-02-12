@@ -3,10 +3,28 @@
 
 Diese Anleitung erklärt, wie Sie die komplette Insurance Demo-Anwendung (Frontend + Backend + Datenbank) deployen können.
 
+> **🎯 Empfohlen für Production: [Render.com mit GitHub Releases](#option-6-rendercom-empfohlen---docker-basiert)**
+
+## ⚡ Quick Start - Production Deployment
+
+**Schnellster Weg zu Production:**
+
+1. **Release erstellen:**
+   ```bash
+   gh release create v1.0.0 --title "Version 1.0.0" --notes "Production release"
+   ```
+
+2. **GitHub Actions baut automatisch Docker Images** und pusht zu `ghcr.io`
+
+3. **Render.com deployt automatisch** die neuen Images
+
+➡️ **Mehr Details:** Siehe [RELEASE_GUIDE.md](./RELEASE_GUIDE.md)
+
 ## 📋 Inhaltsverzeichnis
 
 1. [Schnellstart mit Docker Compose](#schnellstart-mit-docker-compose)
 2. [Cloud Hosting Optionen](#cloud-hosting-optionen)
+   - [Option 6: Render.com (Empfohlen)](#option-6-rendercom-empfohlen---docker-basiert)
 3. [Manuelle Deployment](#manuelle-deployment)
 4. [Umgebungskonfiguration](#umgebungskonfiguration)
 5. [Monitoring & Wartung](#monitoring--wartung)
@@ -250,15 +268,93 @@ git push heroku main
 
 ---
 
-### Option 6: Railway / Render / Fly.io
+### Option 6: Render.com (Empfohlen - Docker-basiert)
 
-**Moderne Developer-freundliche Plattformen**
+**Moderne Developer-freundliche Plattform mit Docker Support**
 
-- Einfaches Git-basiertes Deployment
-- Gutes kostenloses Tier verfügbar
-- CI/CD integriert
+Die UX Platform nutzt Render.com mit Docker-Containern für Production Deployment.
+
+#### Vorteile
+- ✅ Docker-basiert - Konsistente Builds
+- ✅ Automatisches Deployment via GitHub Releases
+- ✅ Kostenlose Tier verfügbar
+- ✅ Managed MongoDB und Redis
+- ✅ Auto-SSL und CDN integriert
+- ✅ Einfache Skalierung
 
 **Kosten:** $0-50/Monat (je nach Usage)
+
+#### Setup mit GitHub Releases
+
+**1. GitHub Container Registry Images:**
+```bash
+# Images werden automatisch bei jedem Release gebaut:
+ghcr.io/stefaneicher/ux-plattform-frontend:latest
+ghcr.io/stefaneicher/ux-plattform-backend:latest
+```
+
+**2. Render.com einrichten:**
+
+```bash
+# 1. Render Account erstellen
+# https://dashboard.render.com
+
+# 2. Blueprint verwenden (render.yaml)
+# - Gehe zu: https://dashboard.render.com/blueprints
+# - "New Blueprint Instance" klicken
+# - Repository verbinden: stefaneicher/ux-plattform
+# - render.yaml wird automatisch erkannt
+# - Services werden automatisch erstellt
+
+# 3. Umgebungsvariablen konfigurieren
+# Im Render Dashboard für jeden Service:
+# - CORS_ORIGIN: https://your-frontend.onrender.com
+# - Weitere Variablen nach Bedarf
+```
+
+**3. Release erstellen und deployen:**
+
+```bash
+# Release erstellen (siehe RELEASE_GUIDE.md)
+gh release create v1.0.0 \
+  --title "Version 1.0.0" \
+  --notes "Initial production release"
+
+# GitHub Actions baut automatisch:
+# - Docker Images für Frontend & Backend
+# - Pusht zu ghcr.io
+# - Render zieht Images und deployt
+```
+
+**4. Deployment verifizieren:**
+
+```bash
+# Health Checks
+curl https://your-frontend.onrender.com/health
+curl https://your-backend.onrender.com/health
+
+# Logs in Render Dashboard prüfen
+# https://dashboard.render.com → Service auswählen → Logs
+```
+
+#### Manuelles Deployment
+
+Falls automatisches Deployment nicht funktioniert:
+
+```bash
+# Option 1: Via Render Dashboard
+# - Dashboard → Service auswählen
+# - "Manual Deploy" → "Deploy latest commit"
+
+# Option 2: Via Render CLI
+render services deploy ux-platform-backend
+render services deploy ux-platform-frontend
+
+# Option 3: Deploy Hook verwenden
+curl -X POST "https://api.render.com/deploy/srv-xxx?key=xxx"
+```
+
+#### Railway / Fly.io Alternative
 
 **Railway Beispiel:**
 ```bash
@@ -267,6 +363,7 @@ railway login
 railway init
 railway up
 ```
+
 
 ---
 

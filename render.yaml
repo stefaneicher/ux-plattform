@@ -1,13 +1,13 @@
-# Render Blueprint für einfaches Deployment
+# Render Blueprint für Docker-basiertes Deployment
 # https://render.com/docs/blueprint-spec
 
 services:
-  # Frontend (Angular)
+  # Frontend (Angular) - Docker Container
   - type: web
     name: ux-platform-frontend
-    env: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist/frontend
+    runtime: image
+    image:
+      url: ghcr.io/stefaneicher/ux-plattform-frontend:latest
     routes:
       - type: rewrite
         source: /*
@@ -15,13 +15,14 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+    healthCheckPath: /health
 
-  # Backend (NestJS)
+  # Backend (NestJS) - Docker Container
   - type: web
     name: ux-platform-backend
-    env: node
-    buildCommand: cd backend && npm install && npm run build
-    startCommand: cd backend && npm start
+    runtime: image
+    image:
+      url: ghcr.io/stefaneicher/ux-plattform-backend:latest
     envVars:
       - key: PORT
         value: 3000
