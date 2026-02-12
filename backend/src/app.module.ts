@@ -4,6 +4,7 @@ import { BullModule } from '@nestjs/bull';
 import { OffersModule } from './offers/offers.module';
 import { PoliciesModule } from './policies/policies.module';
 import { ClaimsModule } from './claims/claims.module';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -30,5 +31,6 @@ import { ClaimsModule } from './claims/claims.module';
     PoliciesModule,
     ClaimsModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}

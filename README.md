@@ -319,7 +319,50 @@ Alle Komponenten erfüllen **WCAG AA Standards** mit:
 
 ## 🚢 Deployment
 
-### GitHub Pages (Automatisch)
+### 🚀 Schnell-Deploy Buttons
+
+Deployen Sie die Anwendung mit einem Klick:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/stefaneicher/ux-platform)
+
+**Neu hier?** → Siehe [WHERE_TO_DEPLOY.md](./WHERE_TO_DEPLOY.md) für alle Optionen und Empfehlungen!
+
+### 📍 Deployment Optionen
+
+| Option | Schwierigkeit | Kosten | Ideal für |
+|--------|---------------|--------|-----------|
+| **Railway** | ⭐ Sehr einfach | $0-50/M | Anfänger, MVP |
+| **Render** | ⭐ Sehr einfach | $0-60/M | Kleine Projekte |
+| **DigitalOcean** | ⭐⭐ Einfach | $30-100/M | Startups |
+| **AWS/Azure** | ⭐⭐⭐ Komplex | $50-150+/M | Enterprise |
+| **Docker Compose** | ⭐⭐ Mittel | $0 (lokal) | Entwicklung |
+| **Hetzner VPS** | ⭐⭐ Mittel | €4-50/M | DSGVO, Budget |
+
+**Detaillierte Guides:**
+- 🎯 **[WHERE_TO_DEPLOY.md](./WHERE_TO_DEPLOY.md)** - Wo kann ich deployen? (Empfehlungen)
+- 📖 **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Vollständiger Deployment Guide
+- 💰 **[HOSTING_COMPARISON.md](./HOSTING_COMPARISON.md)** - Kosten & Feature-Vergleich
+- ⚡ **[QUICKSTART_DEPLOYMENT.md](./QUICKSTART_DEPLOYMENT.md)** - Schnellstart
+
+### Vollständige Anwendung (Frontend + Backend + DB)
+
+**🚀 Quick Start mit Docker Compose:**
+
+```bash
+# Einfachstes Deployment mit einem Befehl
+docker compose up -d
+
+# Oder verwenden Sie das interaktive Script
+./deploy.sh
+```
+
+Die Anwendung ist verfügbar unter:
+- **Frontend**: http://localhost:4200
+- **Backend API**: http://localhost:3000
+- **MongoDB**: localhost:27017
+- **Redis**: localhost:6379
+
+### Design System (GitHub Pages)
 
 Das Repository ist bereits für automatisches Deployment zu GitHub Pages konfiguriert:
 
@@ -327,13 +370,7 @@ Das Repository ist bereits für automatisches Deployment zu GitHub Pages konfigu
 2. **GitHub Pages URL**: [https://stefaneicher.github.io/ux-platform/](https://stefaneicher.github.io/ux-platform/)
 3. **Demo-App URL**: [https://stefaneicher.github.io/ux-platform/demo.html](https://stefaneicher.github.io/ux-platform/demo.html)
 
-### Manuelle Deployment-Optionen
-
-Siehe [Deployment Guide](./docs/deployment.md) für:
-- Static Hosting (AWS S3, Azure Blob Storage, Netlify, Vercel)
-- Container Deployment (Docker, Kubernetes)
-- CDN Distribution
-- NPM Package Publishing
+Siehe auch [Design System Deployment Guide](./docs/deployment.md) für weitere Optionen.
 
 ## 🤝 Contributing
 
