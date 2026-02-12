@@ -65,10 +65,6 @@
 
 /* Responsive sidenav and content adjustments for mobile (<600px) */
 @media (max-width: 599px) {
-  .sidenav {
-    width: 240px;
-  }
-  
   .main-content {
     padding: 16px;
   }
