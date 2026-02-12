@@ -64,27 +64,28 @@ Design Tokens sind die atomaren Design-Entscheidungen, ausgedrückt als CSS Cust
 
 #### Brand Colors
 ```css
---color-primary: #1976d2;
---color-primary-light: #42a5f5;
---color-primary-dark: #1565c0;
---color-secondary: #dc004e;
+--color-primary: #0066CC;
+--color-primary-light: #3399FF;
+--color-primary-dark: #004080;
+--color-secondary: #004080;
+--color-accent: #FF6B35;
 ```
 
 #### Semantic Colors
 ```css
---color-success: #4caf50;  /* Erfolgsaktionen */
---color-warning: #ff9800;  /* Warnungen */
---color-error: #f44336;    /* Fehler */
---color-info: #2196f3;     /* Informationen */
+--color-success: #28A745;  /* Erfolgsaktionen */
+--color-warning: #FFC107;  /* Warnungen */
+--color-error: #DC3545;    /* Fehler */
+--color-info: #17A2B8;     /* Informationen */
 ```
 
 #### Neutral Colors
 Grau-Skala von 50 (sehr hell) bis 900 (sehr dunkel):
 ```css
---color-gray-50: #fafafa;
---color-gray-100: #f5f5f5;
+--color-gray-50: #F8F9FA;
+--color-gray-100: #E9ECEF;
 /* ... */
---color-gray-900: #212121;
+--color-gray-900: #000000;
 ```
 
 ### Typografie
