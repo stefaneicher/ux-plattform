@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
+  @ViewChild('sidenav', { static: false }) sidenav?: MatSidenav;
   
   title = 'CSS Insurance Demo';
   sidenavMode: 'side' | 'over' = 'side';
