@@ -12,8 +12,8 @@ RUN npm ci --prefer-offline --no-audit
 # Copy source code
 COPY . .
 
-# Build the application for production using npx to ensure ng is found
-RUN npx ng build
+# Build the application for production
+RUN npm run build
 
 # Production stage with nginx
 FROM nginx:alpine
