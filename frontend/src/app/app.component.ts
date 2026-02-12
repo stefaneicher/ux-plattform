@@ -28,15 +28,15 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Observe screen size changes
     this.breakpointObserver
-      .observe([Breakpoints.XSmall, Breakpoints.Small])
+      .observe([Breakpoints.XSmall])
       .pipe(takeUntil(this.destroy$))
       .subscribe(result => {
         if (result.matches) {
-          // Mobile/tablet: use overlay mode and close by default
+          // Mobile (XSmall <600px): use overlay mode and close by default
           this.sidenavMode = 'over';
           this.sidenavOpened = false;
         } else {
-          // Desktop: use side mode and open by default
+          // Tablet and Desktop (>=600px): use side mode and open by default
           this.sidenavMode = 'side';
           this.sidenavOpened = true;
         }
