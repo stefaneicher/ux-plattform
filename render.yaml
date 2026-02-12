@@ -49,8 +49,8 @@ databases:
   # MongoDB
   - name: mongodb
     databaseName: insurance
-    plan: starter
+    plan: free
 
   # Redis
   - name: redis
-    plan: starter
+    plan: free
