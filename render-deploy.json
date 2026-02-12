@@ -1,0 +1,85 @@
+{
+  "name": "UX Platform - Insurance Demo",
+  "description": "Full-Stack Insurance Application mit Angular Frontend, NestJS Backend, MongoDB und Redis",
+  "repository": "https://github.com/stefaneicher/ux-platform",
+  "logo": "https://raw.githubusercontent.com/stefaneicher/ux-platform/main/docs/logo.png",
+  "keywords": ["angular", "nestjs", "mongodb", "insurance", "typescript"],
+  "services": [
+    {
+      "type": "web",
+      "name": "frontend",
+      "env": "static",
+      "region": "frankfurt",
+      "plan": "starter",
+      "buildCommand": "cd frontend && npm ci && npm run build",
+      "staticPublishPath": "frontend/dist/frontend",
+      "routes": [
+        {
+          "type": "rewrite",
+          "source": "/*",
+          "destination": "/index.html"
+        }
+      ],
+      "envVars": [
+        {
+          "key": "NODE_ENV",
+          "value": "production"
+        }
+      ]
+    },
+    {
+      "type": "web",
+      "name": "backend",
+      "env": "node",
+      "region": "frankfurt",
+      "plan": "starter",
+      "buildCommand": "cd backend && npm ci && npm run build",
+      "startCommand": "cd backend && npm start",
+      "envVars": [
+        {
+          "key": "PORT",
+          "value": "3000"
+        },
+        {
+          "key": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "key": "MONGODB_URI",
+          "fromDatabase": {
+            "name": "mongodb",
+            "property": "connectionString"
+          }
+        },
+        {
+          "key": "REDIS_HOST",
+          "fromService": {
+            "name": "redis",
+            "type": "redis",
+            "property": "host"
+          }
+        },
+        {
+          "key": "REDIS_PORT",
+          "fromService": {
+            "name": "redis",
+            "type": "redis",
+            "property": "port"
+          }
+        },
+        {
+          "key": "CORS_ORIGIN",
+          "generateValue": false
+        }
+      ],
+      "healthCheckPath": "/health"
+    }
+  ],
+  "databases": [
+    {
+      "name": "mongodb",
+      "databaseName": "insurance",
+      "plan": "starter"
+    }
+  ]
+}
