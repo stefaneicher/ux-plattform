@@ -38,9 +38,9 @@ This project uses GitHub Actions for continuous integration and deployment.
 - Manual trigger via `workflow_dispatch`
 
 **Jobs:**
-- **Build** - Builds the Storybook static site
+- **Build** - Builds the complete project including tokens and Storybook
   - Install dependencies
-  - Build Storybook with design tokens
+  - Build design tokens and documentation site (`npm run build`)
   - Upload artifact to GitHub Pages
 
 - **Deploy** - Deploys to GitHub Pages
