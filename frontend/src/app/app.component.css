@@ -6,6 +6,23 @@
   z-index: 1000;
 }
 
+.menu-toggle {
+  margin-right: 8px;
+}
+
+/* Responsive breakpoints:
+   - Mobile: <600px (XSmall)
+   - Tablet: 600px-959px (Small)
+   - Desktop: ≥960px (Medium+)
+*/
+
+/* Hide menu toggle on desktop (≥960px) */
+@media (min-width: 960px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -24,6 +41,33 @@
 
 .sidenav {
   width: 240px;
+}
+
+/* Responsive sidenav and content adjustments for tablets (600px-959px) */
+@media (max-width: 959px) and (min-width: 600px) {
+  .sidenav {
+    width: 72px;
+  }
+  
+  .nav-label {
+    display: none;
+  }
+  
+  .sidenav .mat-mdc-list-item {
+    padding: 0 16px;
+    justify-content: center;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+}
+
+/* Responsive sidenav and content adjustments for mobile (<600px) */
+@media (max-width: 599px) {
+  .main-content {
+    padding: 16px;
+  }
 }
 
 .nav-label {
