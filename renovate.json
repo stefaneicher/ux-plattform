@@ -27,28 +27,17 @@
   "separateMajorMinor": true,
   "separateMinorPatch": false,
   "rangeStrategy": "bump",
-  "automerge": true,
-  "automergeType": "pr",
-  "automergeStrategy": "squash",
-  "platformAutomerge": true,
   "ignoreDeps": [],
   "packageRules": [
     {
-      "description": "Automerge patch updates",
+      "description": "Automerge patch and minor updates",
       "matchUpdateTypes": [
-        "patch"
-      ],
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
-    },
-    {
-      "description": "Automerge minor updates for non-major versions",
-      "matchUpdateTypes": [
+        "patch",
         "minor"
       ],
       "automerge": true,
       "automergeType": "pr",
+      "automergeStrategy": "squash",
       "platformAutomerge": true
     },
     {
