@@ -1,0 +1,84 @@
+# Kubernetes Deployment Configuration
+# Backend API (NestJS)
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: ux-platform
+data:
+  PORT: "3000"
+  NODE_ENV: "production"
+  MONGODB_URI: "mongodb://mongodb:27017/insurance"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: ux-platform
+  labels:
+    app: backend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      targetPort: 3000
+      name: http
+  selector:
+    app: backend
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: ux-platform
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: ux-platform-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: backend-config
+          env:
+            - name: CORS_ORIGIN
+              value: "https://your-frontend-domain.com"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 3

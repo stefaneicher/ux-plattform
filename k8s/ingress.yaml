@@ -1,0 +1,40 @@
+# Kubernetes Ingress Configuration
+# Routes external traffic to frontend and backend
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ux-platform-ingress
+  namespace: ux-platform
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - your-domain.com
+        - api.your-domain.com
+      secretName: ux-platform-tls
+  rules:
+    - host: your-domain.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
+    - host: api.your-domain.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 3000

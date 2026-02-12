@@ -319,7 +319,34 @@ Alle Komponenten erfüllen **WCAG AA Standards** mit:
 
 ## 🚢 Deployment
 
-### GitHub Pages (Automatisch)
+### Vollständige Anwendung (Frontend + Backend + DB)
+
+**🚀 Quick Start mit Docker Compose:**
+
+```bash
+# Einfachstes Deployment mit einem Befehl
+docker-compose up -d
+
+# Oder verwenden Sie das interaktive Script
+./deploy.sh
+```
+
+Die Anwendung ist verfügbar unter:
+- **Frontend**: http://localhost:4200
+- **Backend API**: http://localhost:3000
+- **MongoDB**: localhost:27017
+- **Redis**: localhost:6379
+
+**📚 Vollständiger Deployment Guide:**
+
+Siehe [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) für detaillierte Anleitungen zu:
+- ☁️ **Cloud Hosting**: AWS, Azure, Google Cloud, Heroku, DigitalOcean
+- 🐳 **Docker & Kubernetes**: Container-basierte Deployments
+- 🖥️ **VPS/Bare Metal**: Manuelle Server-Installation
+- 💰 **Kostenvergleich**: Hosting-Optionen je nach Projektgröße
+- 🔒 **Security & Monitoring**: Production Best Practices
+
+### Design System (GitHub Pages)
 
 Das Repository ist bereits für automatisches Deployment zu GitHub Pages konfiguriert:
 
@@ -327,13 +354,7 @@ Das Repository ist bereits für automatisches Deployment zu GitHub Pages konfigu
 2. **GitHub Pages URL**: [https://stefaneicher.github.io/ux-platform/](https://stefaneicher.github.io/ux-platform/)
 3. **Demo-App URL**: [https://stefaneicher.github.io/ux-platform/demo.html](https://stefaneicher.github.io/ux-platform/demo.html)
 
-### Manuelle Deployment-Optionen
-
-Siehe [Deployment Guide](./docs/deployment.md) für:
-- Static Hosting (AWS S3, Azure Blob Storage, Netlify, Vercel)
-- Container Deployment (Docker, Kubernetes)
-- CDN Distribution
-- NPM Package Publishing
+Siehe auch [Design System Deployment Guide](./docs/deployment.md) für weitere Optionen.
 
 ## 🤝 Contributing
 
