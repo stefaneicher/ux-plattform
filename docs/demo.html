@@ -535,6 +535,10 @@
                         <span class="material-icons">report_problem</span>
                         <span>Schäden</span>
                     </a>
+                    <a href="#products" class="nav-item" data-page="products">
+                        <span class="material-icons">inventory_2</span>
+                        <span>Produkte</span>
+                    </a>
                 </div>
                 <div class="nav-section">
                     <div class="nav-section-title">Verwaltung</div>
@@ -731,11 +735,410 @@
                         <button class="tab">Abgeschlossen</button>
                     </div>
 
+                    <!-- Recent Offers Table -->
                     <div class="card">
-                        <h2 class="card-title">Offertenverwaltung</h2>
+                        <h2 class="card-title">Aktuelle Offerten</h2>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Offerten-Nr.</th>
+                                        <th>Kunde</th>
+                                        <th>Produkt</th>
+                                        <th>Prämie</th>
+                                        <th>Erstellt am</th>
+                                        <th>Status</th>
+                                        <th>Aktionen</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#OFF-2026-1245</td>
+                                        <td>Müller AG</td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <span class="material-icons" style="font-size: 18px; color: var(--color-primary);">home</span>
+                                                <span>Hausrat Komfort</span>
+                                            </div>
+                                        </td>
+                                        <td>CHF 79.00/Mt.</td>
+                                        <td>12.02.2026</td>
+                                        <td><span class="chip warning">Offen</span></td>
+                                        <td>
+                                            <button class="btn btn-secondary" style="padding: 8px 12px; font-size: 0.875rem;">
+                                                <span class="material-icons" style="font-size: 16px;">visibility</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#OFF-2026-1244</td>
+                                        <td>Schmidt GmbH</td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <span class="material-icons" style="font-size: 18px; color: var(--color-primary);">directions_car</span>
+                                                <span>Auto Vollkasko</span>
+                                            </div>
+                                        </td>
+                                        <td>CHF 129.00/Mt.</td>
+                                        <td>11.02.2026</td>
+                                        <td><span class="chip info">In Bearbeitung</span></td>
+                                        <td>
+                                            <button class="btn btn-secondary" style="padding: 8px 12px; font-size: 0.875rem;">
+                                                <span class="material-icons" style="font-size: 16px;">visibility</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#OFF-2026-1243</td>
+                                        <td>Weber & Co</td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <span class="material-icons" style="font-size: 18px; color: var(--color-primary);">apartment</span>
+                                                <span>Gebäude Premium</span>
+                                            </div>
+                                        </td>
+                                        <td>CHF 189.00/Mt.</td>
+                                        <td>10.02.2026</td>
+                                        <td><span class="chip success">Abgeschlossen</span></td>
+                                        <td>
+                                            <button class="btn btn-secondary" style="padding: 8px 12px; font-size: 0.875rem;">
+                                                <span class="material-icons" style="font-size: 16px;">visibility</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#OFF-2026-1242</td>
+                                        <td>Fischer KG</td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <span class="material-icons" style="font-size: 18px; color: var(--color-primary);">favorite</span>
+                                                <span>Leben Basis</span>
+                                            </div>
+                                        </td>
+                                        <td>CHF 45.00/Mt.</td>
+                                        <td>09.02.2026</td>
+                                        <td><span class="chip success">Abgeschlossen</span></td>
+                                        <td>
+                                            <button class="btn btn-secondary" style="padding: 8px 12px; font-size: 0.875rem;">
+                                                <span class="material-icons" style="font-size: 16px;">visibility</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Offer Creation Wizard Info -->
+                    <div class="card" style="margin-top: var(--spacing-6);">
+                        <h2 class="card-title">Neue Offerte erstellen</h2>
                         <div class="card-content">
-                            <p>Offerten-Wizard mit mehrstufigem Formular und automatischer Validierung.</p>
-                            <p>Implementiert als Material Stepper mit Sections und Zwischenspeicherung.</p>
+                            <p style="margin-bottom: var(--spacing-4);">Erstellen Sie eine neue Offerte in wenigen Schritten:</p>
+                            <ol style="margin-left: var(--spacing-6); margin-bottom: var(--spacing-4);">
+                                <li style="margin-bottom: 8px;">Wählen Sie unter "Produkte" das gewünschte Versicherungsprodukt aus</li>
+                                <li style="margin-bottom: 8px;">Konfigurieren Sie Deckungsumfang und Zusatzoptionen</li>
+                                <li style="margin-bottom: 8px;">Prüfen Sie die Zusammenfassung und Prämienberechnung</li>
+                                <li style="margin-bottom: 8px;">Erstellen Sie die Offerte für den Kunden</li>
+                            </ol>
+                            <div style="display: flex; gap: var(--spacing-4);">
+                                <button class="btn btn-primary" onclick="document.querySelector('[data-page=products]').click();">
+                                    <span class="material-icons">inventory_2</span>
+                                    Zu Produkten
+                                </button>
+                                <button class="btn btn-secondary" onclick="configureProduct('hausrat')">
+                                    <span class="material-icons">add</span>
+                                    Schnellstart: Hausrat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Page -->
+                <div id="page-products" class="page" style="display: none;">
+                    <div class="page-header">
+                        <div class="breadcrumbs">
+                            <a href="#dashboard" class="breadcrumb-link">Home</a>
+                            <span class="material-icons" style="font-size: 16px;">chevron_right</span>
+                            <span>Produkte</span>
+                        </div>
+                        <div class="page-title">
+                            <h1>Produkte</h1>
+                            <div class="page-actions">
+                                <button class="btn btn-primary" onclick="showProductConfig()">
+                                    <span class="material-icons">add</span>
+                                    Neues Produkt
+                                </button>
+                                <button class="btn btn-secondary" onclick="showProductComparison()">
+                                    <span class="material-icons">compare</span>
+                                    Vergleichen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Categories -->
+                    <div class="tabs" id="product-tabs">
+                        <button class="tab active" onclick="filterProducts('alle', event)">Alle</button>
+                        <button class="tab" onclick="filterProducts('hausrat', event)">Hausrat</button>
+                        <button class="tab" onclick="filterProducts('auto', event)">Auto</button>
+                        <button class="tab" onclick="filterProducts('leben', event)">Leben</button>
+                        <button class="tab" onclick="filterProducts('gebaeude', event)">Gebäude</button>
+                    </div>
+
+                    <!-- Product Catalog Grid -->
+                    <div class="grid grid-3" id="product-catalog">
+                        <!-- Hausrat Product -->
+                        <div class="card product-card" data-category="hausrat">
+                            <div style="padding: var(--spacing-4); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: var(--radius-base) var(--radius-base) 0 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <span class="material-icons" style="font-size: 48px;">home</span>
+                                        <h3 style="margin-top: var(--spacing-4); font-size: 1.5rem;">Hausrat</h3>
+                                    </div>
+                                    <span class="chip" style="background: rgba(255,255,255,0.2); color: white;">Bestseller</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p style="color: var(--color-gray-600); margin-bottom: var(--spacing-4);">Umfassender Schutz für Ihr Hab und Gut</p>
+                                <div style="margin-bottom: var(--spacing-4);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: var(--color-gray-600);">Ab</span>
+                                        <span style="font-size: 1.5rem; font-weight: 500; color: var(--color-primary);">CHF 12.50/Mt.</span>
+                                    </div>
+                                </div>
+                                <ul style="list-style: none; margin-bottom: var(--spacing-4);">
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Feuer, Wasser, Einbruch</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Fahrlässigkeitsschutz</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>24/7 Schadenservice</span>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%;" onclick="configureProduct('hausrat')">
+                                    Konfigurieren
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Auto Product -->
+                        <div class="card product-card" data-category="auto">
+                            <div style="padding: var(--spacing-4); background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: var(--radius-base) var(--radius-base) 0 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <span class="material-icons" style="font-size: 48px;">directions_car</span>
+                                        <h3 style="margin-top: var(--spacing-4); font-size: 1.5rem;">Auto</h3>
+                                    </div>
+                                    <span class="chip" style="background: rgba(255,255,255,0.2); color: white;">Neu</span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p style="color: var(--color-gray-600); margin-bottom: var(--spacing-4);">Vollkasko & Teilkasko für jedes Fahrzeug</p>
+                                <div style="margin-bottom: var(--spacing-4);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: var(--color-gray-600);">Ab</span>
+                                        <span style="font-size: 1.5rem; font-weight: 500; color: var(--color-primary);">CHF 89.00/Mt.</span>
+                                    </div>
+                                </div>
+                                <ul style="list-style: none; margin-bottom: var(--spacing-4);">
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Haftpflicht & Kasko</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Pannenhilfe inklusive</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Bonus-Schutz</span>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%;" onclick="configureProduct('auto')">
+                                    Konfigurieren
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Leben Product -->
+                        <div class="card product-card" data-category="leben">
+                            <div style="padding: var(--spacing-4); background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: var(--radius-base) var(--radius-base) 0 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <span class="material-icons" style="font-size: 48px;">favorite</span>
+                                        <h3 style="margin-top: var(--spacing-4); font-size: 1.5rem;">Leben</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p style="color: var(--color-gray-600); margin-bottom: var(--spacing-4);">Finanzielle Sicherheit für Ihre Liebsten</p>
+                                <div style="margin-bottom: var(--spacing-4);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: var(--color-gray-600);">Ab</span>
+                                        <span style="font-size: 1.5rem; font-weight: 500; color: var(--color-primary);">CHF 45.00/Mt.</span>
+                                    </div>
+                                </div>
+                                <ul style="list-style: none; margin-bottom: var(--spacing-4);">
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Risikolebensversicherung</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Kapital oder Rente</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Flexible Laufzeit</span>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%;" onclick="configureProduct('leben')">
+                                    Konfigurieren
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Gebäude Product -->
+                        <div class="card product-card" data-category="gebaeude">
+                            <div style="padding: var(--spacing-4); background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; border-radius: var(--radius-base) var(--radius-base) 0 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <span class="material-icons" style="font-size: 48px;">apartment</span>
+                                        <h3 style="margin-top: var(--spacing-4); font-size: 1.5rem;">Gebäude</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p style="color: var(--color-gray-600); margin-bottom: var(--spacing-4);">Schutz für Ihre Immobilie</p>
+                                <div style="margin-bottom: var(--spacing-4);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: var(--color-gray-600);">Ab</span>
+                                        <span style="font-size: 1.5rem; font-weight: 500; color: var(--color-primary);">CHF 67.00/Mt.</span>
+                                    </div>
+                                </div>
+                                <ul style="list-style: none; margin-bottom: var(--spacing-4);">
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Feuer & Elementar</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Wasser & Glasbruch</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Neuwertgarantie</span>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%;" onclick="configureProduct('gebaeude')">
+                                    Konfigurieren
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Rechtsschutz Product -->
+                        <div class="card product-card" data-category="alle">
+                            <div style="padding: var(--spacing-4); background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: var(--color-gray-800); border-radius: var(--radius-base) var(--radius-base) 0 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <span class="material-icons" style="font-size: 48px;">gavel</span>
+                                        <h3 style="margin-top: var(--spacing-4); font-size: 1.5rem;">Rechtsschutz</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p style="color: var(--color-gray-600); margin-bottom: var(--spacing-4);">Umfassende rechtliche Absicherung</p>
+                                <div style="margin-bottom: var(--spacing-4);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: var(--color-gray-600);">Ab</span>
+                                        <span style="font-size: 1.5rem; font-weight: 500; color: var(--color-primary);">CHF 19.90/Mt.</span>
+                                    </div>
+                                </div>
+                                <ul style="list-style: none; margin-bottom: var(--spacing-4);">
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Privat & Beruf</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Verkehrsrechtsschutz</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>24/7 Rechtshotline</span>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%;" onclick="configureProduct('rechtsschutz')">
+                                    Konfigurieren
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Reise Product -->
+                        <div class="card product-card" data-category="alle">
+                            <div style="padding: var(--spacing-4); background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: var(--color-gray-800); border-radius: var(--radius-base) var(--radius-base) 0 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: start;">
+                                    <div>
+                                        <span class="material-icons" style="font-size: 48px;">flight_takeoff</span>
+                                        <h3 style="margin-top: var(--spacing-4); font-size: 1.5rem;">Reise</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p style="color: var(--color-gray-600); margin-bottom: var(--spacing-4);">Sorgenfreies Reisen weltweit</p>
+                                <div style="margin-bottom: var(--spacing-4);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span style="color: var(--color-gray-600);">Ab</span>
+                                        <span style="font-size: 1.5rem; font-weight: 500; color: var(--color-primary);">CHF 8.50/Mt.</span>
+                                    </div>
+                                </div>
+                                <ul style="list-style: none; margin-bottom: var(--spacing-4);">
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Reiseabbruch & -annullierung</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Gepäckversicherung</span>
+                                    </li>
+                                    <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <span class="material-icons" style="font-size: 16px; color: var(--color-success); margin-right: 8px;">check_circle</span>
+                                        <span>Notfall-Assistance</span>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%;" onclick="configureProduct('reise')">
+                                    Konfigurieren
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Statistics -->
+                    <div class="card" style="margin-top: var(--spacing-6);">
+                        <h2 class="card-title">Produktstatistik</h2>
+                        <div class="grid grid-4">
+                            <div style="text-align: center; padding: var(--spacing-4);">
+                                <div style="font-size: 2rem; font-weight: 500; color: var(--color-primary);">6</div>
+                                <div style="color: var(--color-gray-600);">Produktkategorien</div>
+                            </div>
+                            <div style="text-align: center; padding: var(--spacing-4);">
+                                <div style="font-size: 2rem; font-weight: 500; color: var(--color-success);">24</div>
+                                <div style="color: var(--color-gray-600);">Konfigurationsoptionen</div>
+                            </div>
+                            <div style="text-align: center; padding: var(--spacing-4);">
+                                <div style="font-size: 2rem; font-weight: 500; color: var(--color-info);">15,423</div>
+                                <div style="color: var(--color-gray-600);">Aktive Policen</div>
+                            </div>
+                            <div style="text-align: center; padding: var(--spacing-4);">
+                                <div style="font-size: 2rem; font-weight: 500; color: var(--color-warning);">98.5%</div>
+                                <div style="color: var(--color-gray-600);">Kundenzufriedenheit</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -924,6 +1327,415 @@
                 }
             });
         });
+
+        // Product filtering functionality
+        function filterProducts(category, event) {
+            const products = document.querySelectorAll('.product-card');
+            const tabs = document.querySelectorAll('#product-tabs .tab');
+            
+            // Update active tab
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter products
+            products.forEach(product => {
+                if (category === 'alle' || product.getAttribute('data-category') === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Product configuration modal
+        function configureProduct(productType) {
+            const productNames = {
+                'hausrat': 'Hausrat',
+                'auto': 'Auto',
+                'leben': 'Leben',
+                'gebaeude': 'Gebäude',
+                'rechtsschutz': 'Rechtsschutz',
+                'reise': 'Reise'
+            };
+            
+            const productName = productNames[productType] || productType;
+            
+            // Create modal HTML
+            const modalHTML = `
+                <div id="product-config-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: var(--spacing-4);">
+                    <div style="background: white; border-radius: var(--radius-base); max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--elevation-3);">
+                        <div style="padding: var(--spacing-6); border-bottom: 1px solid var(--color-gray-200); display: flex; justify-content: space-between; align-items: center;">
+                            <h2 style="margin: 0; font-size: 1.5rem;">${productName} konfigurieren</h2>
+                            <button onclick="closeProductConfig()" style="background: none; border: none; cursor: pointer; padding: 8px;">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div style="padding: var(--spacing-6);">
+                            <!-- Configuration Wizard Steps -->
+                            <div style="margin-bottom: var(--spacing-6);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-4);">
+                                    <div style="flex: 1; text-align: center;">
+                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-4);">1</div>
+                                        <div style="font-size: 0.875rem; font-weight: 500;">Deckung</div>
+                                    </div>
+                                    <div style="flex: 1; text-align: center;">
+                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-gray-200); color: var(--color-gray-600); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-4);">2</div>
+                                        <div style="font-size: 0.875rem; color: var(--color-gray-600);">Optionen</div>
+                                    </div>
+                                    <div style="flex: 1; text-align: center;">
+                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-gray-200); color: var(--color-gray-600); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-4);">3</div>
+                                        <div style="font-size: 0.875rem; color: var(--color-gray-600);">Prämie</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 1: Coverage -->
+                            <div id="config-step-1">
+                                <h3 style="margin-bottom: var(--spacing-4);">Schritt 1: Deckungsumfang wählen</h3>
+                                
+                                <div style="display: grid; gap: var(--spacing-4); margin-bottom: var(--spacing-6);">
+                                    <label style="display: flex; align-items: center; padding: var(--spacing-4); border: 2px solid var(--color-gray-300); border-radius: var(--radius-base); cursor: pointer;">
+                                        <input type="radio" name="coverage" value="basis" checked style="margin-right: var(--spacing-4);">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 500; margin-bottom: 4px;">Basis</div>
+                                            <div style="font-size: 0.875rem; color: var(--color-gray-600);">Grundschutz mit den wichtigsten Leistungen</div>
+                                        </div>
+                                        <div style="font-size: 1.25rem; font-weight: 500; color: var(--color-primary);">CHF 45/Mt.</div>
+                                    </label>
+                                    
+                                    <label style="display: flex; align-items: center; padding: var(--spacing-4); border: 2px solid var(--color-primary); border-radius: var(--radius-base); cursor: pointer; background: rgba(25, 118, 210, 0.05);">
+                                        <input type="radio" name="coverage" value="komfort" style="margin-right: var(--spacing-4);">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 500; margin-bottom: 4px;">Komfort <span class="chip" style="background: var(--color-primary); color: white; font-size: 0.75rem; padding: 2px 8px; margin-left: 8px;">Empfohlen</span></div>
+                                            <div style="font-size: 0.875rem; color: var(--color-gray-600);">Erweiterte Deckung mit zusätzlichen Leistungen</div>
+                                        </div>
+                                        <div style="font-size: 1.25rem; font-weight: 500; color: var(--color-primary);">CHF 79/Mt.</div>
+                                    </label>
+                                    
+                                    <label style="display: flex; align-items: center; padding: var(--spacing-4); border: 2px solid var(--color-gray-300); border-radius: var(--radius-base); cursor: pointer;">
+                                        <input type="radio" name="coverage" value="premium" style="margin-right: var(--spacing-4);">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 500; margin-bottom: 4px;">Premium</div>
+                                            <div style="font-size: 0.875rem; color: var(--color-gray-600);">Vollumfänglicher Schutz mit allen Extras</div>
+                                        </div>
+                                        <div style="font-size: 1.25rem; font-weight: 500; color: var(--color-primary);">CHF 129/Mt.</div>
+                                    </label>
+                                </div>
+
+                                ${getProductSpecificFields(productType)}
+
+                                <div style="display: flex; justify-content: space-between; margin-top: var(--spacing-6);">
+                                    <button onclick="closeProductConfig()" class="btn btn-secondary">Abbrechen</button>
+                                    <button onclick="nextConfigStep()" class="btn btn-primary">Weiter</button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Options (hidden initially) -->
+                            <div id="config-step-2" style="display: none;">
+                                <h3 style="margin-bottom: var(--spacing-4);">Schritt 2: Zusatzoptionen</h3>
+                                
+                                <div style="display: grid; gap: var(--spacing-4); margin-bottom: var(--spacing-6);">
+                                    <label style="display: flex; align-items: center; padding: var(--spacing-4); border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); cursor: pointer;">
+                                        <input type="checkbox" style="margin-right: var(--spacing-4);">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 500; margin-bottom: 4px;">Selbstbehalt reduzieren</div>
+                                            <div style="font-size: 0.875rem; color: var(--color-gray-600);">Reduzierung des Selbstbehalts von CHF 1000 auf CHF 500</div>
+                                        </div>
+                                        <div style="color: var(--color-success);">+CHF 15/Mt.</div>
+                                    </label>
+                                    
+                                    <label style="display: flex; align-items: center; padding: var(--spacing-4); border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); cursor: pointer;">
+                                        <input type="checkbox" style="margin-right: var(--spacing-4);">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 500; margin-bottom: 4px;">Grobe Fahrlässigkeit</div>
+                                            <div style="font-size: 0.875rem; color: var(--color-gray-600);">Schutz auch bei grober Fahrlässigkeit</div>
+                                        </div>
+                                        <div style="color: var(--color-success);">+CHF 12/Mt.</div>
+                                    </label>
+                                    
+                                    <label style="display: flex; align-items: center; padding: var(--spacing-4); border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); cursor: pointer;">
+                                        <input type="checkbox" style="margin-right: var(--spacing-4);">
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 500; margin-bottom: 4px;">24/7 Premium Service</div>
+                                            <div style="font-size: 0.875rem; color: var(--color-gray-600);">Persönlicher Ansprechpartner und Prioritätsbearbeitung</div>
+                                        </div>
+                                        <div style="color: var(--color-success);">+CHF 9/Mt.</div>
+                                    </label>
+                                </div>
+
+                                <div style="display: flex; justify-content: space-between; margin-top: var(--spacing-6);">
+                                    <button onclick="prevConfigStep()" class="btn btn-secondary">Zurück</button>
+                                    <button onclick="nextConfigStep()" class="btn btn-primary">Weiter</button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Summary (hidden initially) -->
+                            <div id="config-step-3" style="display: none;">
+                                <h3 style="margin-bottom: var(--spacing-4);">Schritt 3: Zusammenfassung & Prämie</h3>
+                                
+                                <div style="background: var(--color-gray-50); padding: var(--spacing-4); border-radius: var(--radius-base); margin-bottom: var(--spacing-6);">
+                                    <h4 style="margin-bottom: var(--spacing-4);">Ihre Konfiguration</h4>
+                                    <div style="display: grid; gap: 8px;">
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span>Produkt:</span>
+                                            <strong>${productName}</strong>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span>Deckung:</span>
+                                            <strong>Komfort</strong>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <span>Zusatzoptionen:</span>
+                                            <strong>3 ausgewählt</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary)); color: white; padding: var(--spacing-6); border-radius: var(--radius-base); text-align: center; margin-bottom: var(--spacing-6);">
+                                    <div style="font-size: 0.875rem; margin-bottom: 8px;">Ihre monatliche Prämie</div>
+                                    <div style="font-size: 3rem; font-weight: 500; margin-bottom: 8px;">CHF 115.00</div>
+                                    <div style="font-size: 0.875rem; opacity: 0.9;">Jährlich: CHF 1,380.00 (1 Monat gespart)</div>
+                                </div>
+
+                                <div style="padding: var(--spacing-4); border: 2px solid var(--color-success); border-radius: var(--radius-base); margin-bottom: var(--spacing-6);">
+                                    <div style="display: flex; align-items: center; gap: var(--spacing-4);">
+                                        <span class="material-icons" style="color: var(--color-success); font-size: 32px;">verified</span>
+                                        <div>
+                                            <div style="font-weight: 500; margin-bottom: 4px;">Sofortschutz</div>
+                                            <div style="font-size: 0.875rem; color: var(--color-gray-600);">Ihr Versicherungsschutz beginnt unmittelbar nach Abschluss</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; justify-content: space-between; margin-top: var(--spacing-6);">
+                                    <button onclick="prevConfigStep()" class="btn btn-secondary">Zurück</button>
+                                    <button onclick="submitProductConfig()" class="btn btn-primary">
+                                        <span class="material-icons" style="font-size: 18px; margin-right: 4px;">shopping_cart</span>
+                                        Offerte erstellen
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        function getProductSpecificFields(productType) {
+            const fields = {
+                'hausrat': `
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Versicherungssumme</label>
+                        <select style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                            <option>CHF 50,000</option>
+                            <option selected>CHF 75,000</option>
+                            <option>CHF 100,000</option>
+                            <option>CHF 150,000</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Wohnfläche (m²)</label>
+                        <input type="number" value="85" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                    </div>
+                `,
+                'auto': `
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Fahrzeugtyp</label>
+                        <select style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                            <option>PKW</option>
+                            <option>Kombi</option>
+                            <option>SUV</option>
+                            <option>Elektroauto</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Fahrzeugwert (CHF)</label>
+                        <input type="number" value="35000" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                    </div>
+                `,
+                'leben': `
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Versicherungssumme</label>
+                        <select style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                            <option>CHF 100,000</option>
+                            <option>CHF 250,000</option>
+                            <option selected>CHF 500,000</option>
+                            <option>CHF 1,000,000</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Laufzeit (Jahre)</label>
+                        <input type="number" value="20" min="5" max="30" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                    </div>
+                `,
+                'gebaeude': `
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Gebäudewert (CHF)</label>
+                        <input type="number" value="750000" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                    </div>
+                    <div style="margin-bottom: var(--spacing-4);">
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Baujahr</label>
+                        <input type="number" value="2010" min="1900" max="${new Date().getFullYear()}" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: var(--radius-base); font-size: 1rem;">
+                    </div>
+                `
+            };
+            
+            return fields[productType] || '';
+        }
+
+        function closeProductConfig() {
+            const modal = document.getElementById('product-config-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        let currentConfigStep = 1;
+
+        function nextConfigStep() {
+            document.getElementById('config-step-' + currentConfigStep).style.display = 'none';
+            currentConfigStep++;
+            document.getElementById('config-step-' + currentConfigStep).style.display = 'block';
+            
+            // Update step indicators
+            updateStepIndicators();
+        }
+
+        function prevConfigStep() {
+            document.getElementById('config-step-' + currentConfigStep).style.display = 'none';
+            currentConfigStep--;
+            document.getElementById('config-step-' + currentConfigStep).style.display = 'block';
+            
+            // Update step indicators
+            updateStepIndicators();
+        }
+
+        function updateStepIndicators() {
+            const modal = document.getElementById('product-config-modal');
+            if (!modal) return;
+            
+            const stepContainers = modal.querySelectorAll('[style*="text-align: center"]');
+            stepContainers.forEach((container, index) => {
+                const indicator = container.querySelector('div[style*="border-radius: 50%"]');
+                if (indicator && index < 3) {
+                    const stepNumber = index + 1;
+                    if (stepNumber <= currentConfigStep) {
+                        indicator.style.background = 'var(--color-primary)';
+                        indicator.style.color = 'white';
+                    } else {
+                        indicator.style.background = 'var(--color-gray-200)';
+                        indicator.style.color = 'var(--color-gray-600)';
+                    }
+                }
+            });
+        }
+
+        function submitProductConfig() {
+            closeProductConfig();
+            
+            // Show success message
+            const successHTML = `
+                <div id="success-toast" style="position: fixed; top: 80px; right: var(--spacing-6); background: var(--color-success); color: white; padding: var(--spacing-4) var(--spacing-6); border-radius: var(--radius-base); box-shadow: var(--elevation-3); z-index: 10001; display: flex; align-items: center; gap: var(--spacing-4);">
+                    <span class="material-icons">check_circle</span>
+                    <span>Offerte erfolgreich erstellt! Sie finden sie unter "Offerten".</span>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', successHTML);
+            
+            setTimeout(() => {
+                const toast = document.getElementById('success-toast');
+                if (toast) {
+                    toast.remove();
+                }
+            }, 4000);
+            
+            // Reset step counter
+            currentConfigStep = 1;
+        }
+
+        function showProductComparison() {
+            const comparisonHTML = `
+                <div id="product-comparison-modal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: var(--spacing-4);">
+                    <div style="background: white; border-radius: var(--radius-base); max-width: 1200px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--elevation-3);">
+                        <div style="padding: var(--spacing-6); border-bottom: 1px solid var(--color-gray-200); display: flex; justify-content: space-between; align-items: center;">
+                            <h2 style="margin: 0; font-size: 1.5rem;">Produktvergleich</h2>
+                            <button onclick="closeProductComparison()" style="background: none; border: none; cursor: pointer; padding: 8px;">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div style="padding: var(--spacing-6); overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--color-gray-300);">
+                                        <th style="text-align: left; padding: var(--spacing-4);">Merkmal</th>
+                                        <th style="text-align: center; padding: var(--spacing-4);">Hausrat</th>
+                                        <th style="text-align: center; padding: var(--spacing-4);">Auto</th>
+                                        <th style="text-align: center; padding: var(--spacing-4);">Leben</th>
+                                        <th style="text-align: center; padding: var(--spacing-4);">Gebäude</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--color-gray-200);">
+                                        <td style="padding: var(--spacing-4); font-weight: 500;">Preis ab</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">CHF 12.50/Mt.</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">CHF 89.00/Mt.</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">CHF 45.00/Mt.</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">CHF 67.00/Mt.</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-gray-200);">
+                                        <td style="padding: var(--spacing-4); font-weight: 500;">Deckungssumme</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">bis CHF 150k</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">Fahrzeugwert</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">bis CHF 1M</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">Gebäudewert</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-gray-200);">
+                                        <td style="padding: var(--spacing-4); font-weight: 500;">Selbstbehalt</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">CHF 200</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">CHF 1000</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">-</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">CHF 500</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-gray-200);">
+                                        <td style="padding: var(--spacing-4); font-weight: 500;">Laufzeit</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">1 Jahr</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">1 Jahr</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">5-30 Jahre</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);">1 Jahr</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-gray-200);">
+                                        <td style="padding: var(--spacing-4); font-weight: 500;">24/7 Service</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-success);">check_circle</span></td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-success);">check_circle</span></td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-gray-400);">cancel</span></td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-success);">check_circle</span></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--color-gray-200);">
+                                        <td style="padding: var(--spacing-4); font-weight: 500;">Online-Abschluss</td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-success);">check_circle</span></td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-success);">check_circle</span></td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-success);">check_circle</span></td>
+                                        <td style="text-align: center; padding: var(--spacing-4);"><span class="material-icons" style="color: var(--color-gray-400);">cancel</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', comparisonHTML);
+        }
+
+        function closeProductComparison() {
+            const modal = document.getElementById('product-comparison-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
     </script>
 </body>
 </html>
