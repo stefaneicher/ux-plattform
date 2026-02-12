@@ -108,11 +108,49 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
+            position: relative;
+            overflow: hidden;
         }
 
         .icon-button:hover {
             background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ripple animation */
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .icon-button.animate {
+            animation: pulse 0.3s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
         }
 
         /* Main Content Layout */
@@ -493,16 +531,16 @@
                     <a href="/" class="logo">CSS Insurance</a>
                 </div>
                 <div class="top-bar-right">
-                    <button class="icon-button" aria-label="Suche">
+                    <button class="icon-button" id="searchBtn" aria-label="Suche">
                         <span class="material-icons">search</span>
                     </button>
-                    <button class="icon-button" aria-label="Benachrichtigungen">
+                    <button class="icon-button" id="notificationsBtn" aria-label="Benachrichtigungen">
                         <span class="material-icons">notifications</span>
                     </button>
-                    <button class="icon-button" aria-label="Hilfe">
+                    <button class="icon-button" id="helpBtn" aria-label="Hilfe">
                         <span class="material-icons">help_outline</span>
                     </button>
-                    <button class="icon-button" aria-label="Profil">
+                    <button class="icon-button" id="profileBtn" aria-label="Profil">
                         <span class="material-icons">account_circle</span>
                     </button>
                 </div>
@@ -1326,6 +1364,91 @@
                     sidenav.style.display = sidenav.style.display === 'none' ? 'block' : 'none';
                 }
             });
+
+            // Top bar button animations and functionality
+            
+            // Create ripple effect on click
+            function createRipple(event) {
+                const button = event.currentTarget;
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = event.clientX - rect.left - size / 2 + 'px';
+                ripple.style.top = event.clientY - rect.top - size / 2 + 'px';
+                
+                button.appendChild(ripple);
+                
+                // Add pulse animation to button
+                button.classList.add('animate');
+                
+                // Remove ripple and animation class after animation completes
+                setTimeout(() => {
+                    ripple.remove();
+                    button.classList.remove('animate');
+                }, 600);
+            }
+
+            // Search button functionality
+            const searchBtn = document.getElementById('searchBtn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function(e) {
+                    createRipple(e);
+                    console.log('Search button clicked - opening search...');
+                    // Add your search functionality here
+                    setTimeout(() => {
+                        alert('Suchfunktion aktiviert!\n\nHier würde die Suchleiste erscheinen.');
+                    }, 100);
+                });
+            }
+
+            // Notifications button functionality
+            const notificationsBtn = document.getElementById('notificationsBtn');
+            if (notificationsBtn) {
+                notificationsBtn.addEventListener('click', function(e) {
+                    createRipple(e);
+                    console.log('Notifications button clicked - showing notifications...');
+                    // Add your notifications functionality here
+                    setTimeout(() => {
+                        alert('Benachrichtigungen\n\n• 3 neue Nachrichten\n• 1 ausstehende Genehmigung\n• System-Update verfügbar');
+                    }, 100);
+                });
+            }
+
+            // Help button functionality
+            const helpBtn = document.getElementById('helpBtn');
+            if (helpBtn) {
+                helpBtn.addEventListener('click', function(e) {
+                    createRipple(e);
+                    console.log('Help button clicked - opening help...');
+                    // Add your help functionality here
+                    setTimeout(() => {
+                        alert('Hilfe & Support\n\nHier finden Sie:\n• Benutzerhandbuch\n• FAQs\n• Kontakt zum Support');
+                    }, 100);
+                });
+            }
+
+            // Profile button functionality
+            const profileBtn = document.getElementById('profileBtn');
+            if (profileBtn) {
+                profileBtn.addEventListener('click', function(e) {
+                    createRipple(e);
+                    console.log('Profile button clicked - opening profile menu...');
+                    // Add your profile functionality here
+                    setTimeout(() => {
+                        alert('Benutzer-Profil\n\nOptionen:\n• Mein Profil\n• Einstellungen\n• Abmelden');
+                    }, 100);
+                });
+            }
+
+            // Menu button also gets ripple effect
+            if (menuBtn) {
+                menuBtn.addEventListener('click', function(e) {
+                    createRipple(e);
+                });
+            }
         });
 
         // Product filtering functionality
