@@ -10,7 +10,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
+  @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
   
   title = 'CSS Insurance Demo';
   sidenavMode: 'side' | 'over' = 'side';
@@ -49,12 +49,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   toggleSidenav() {
-    this.sidenav.toggle();
+    if (this.sidenav) {
+      this.sidenav.toggle();
+    }
   }
 
   onNavItemClick() {
     // Close sidenav on mobile after navigation
-    if (this.sidenavMode === 'over') {
+    if (this.sidenavMode === 'over' && this.sidenav) {
       this.sidenav.close();
     }
   }

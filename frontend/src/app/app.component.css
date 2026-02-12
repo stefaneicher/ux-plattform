@@ -10,7 +10,13 @@
   margin-right: 8px;
 }
 
-/* Hide menu toggle on larger screens */
+/* Responsive breakpoints:
+   - Mobile: <600px (XSmall)
+   - Tablet: 600px-959px (Small)
+   - Desktop: ≥960px (Medium+)
+*/
+
+/* Hide menu toggle on desktop (≥960px) */
 @media (min-width: 960px) {
   .menu-toggle {
     display: none;
@@ -37,7 +43,7 @@
   width: 240px;
 }
 
-/* Responsive sidenav: narrow width on tablets */
+/* Responsive sidenav: narrow width on tablets (600px-959px) */
 @media (max-width: 959px) and (min-width: 600px) {
   .sidenav {
     width: 72px;
@@ -53,7 +59,7 @@
   }
 }
 
-/* Responsive sidenav: normal width on mobile (when overlay) */
+/* Responsive sidenav: normal width on mobile when overlay (<600px) */
 @media (max-width: 599px) {
   .sidenav {
     width: 240px;
@@ -68,14 +74,14 @@
   padding: 24px;
 }
 
-/* Reduce padding on mobile */
+/* Reduce padding on mobile (<600px) */
 @media (max-width: 599px) {
   .main-content {
     padding: 16px;
   }
 }
 
-/* Reduce padding on tablets */
+/* Reduce padding on tablets (600px-959px) */
 @media (max-width: 959px) and (min-width: 600px) {
   .main-content {
     padding: 20px;
