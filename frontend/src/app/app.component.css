@@ -43,7 +43,7 @@
   width: 240px;
 }
 
-/* Responsive sidenav: narrow width on tablets (600px-959px) */
+/* Responsive sidenav and content adjustments for tablets (600px-959px) */
 @media (max-width: 959px) and (min-width: 600px) {
   .sidenav {
     width: 72px;
@@ -57,12 +57,20 @@
     padding: 0 16px;
     justify-content: center;
   }
+  
+  .main-content {
+    padding: 20px;
+  }
 }
 
-/* Responsive sidenav: normal width on mobile when overlay (<600px) */
+/* Responsive sidenav and content adjustments for mobile (<600px) */
 @media (max-width: 599px) {
   .sidenav {
     width: 240px;
+  }
+  
+  .main-content {
+    padding: 16px;
   }
 }
 
@@ -72,20 +80,6 @@
 
 .main-content {
   padding: 24px;
-}
-
-/* Reduce padding on mobile (<600px) */
-@media (max-width: 599px) {
-  .main-content {
-    padding: 16px;
-  }
-}
-
-/* Reduce padding on tablets (600px-959px) */
-@media (max-width: 959px) and (min-width: 600px) {
-  .main-content {
-    padding: 20px;
-  }
 }
 
 .active {
