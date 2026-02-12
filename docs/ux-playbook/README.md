@@ -85,7 +85,7 @@ Grau-Skala von 50 (sehr hell) bis 900 (sehr dunkel):
 --color-gray-50: #F8F9FA;
 --color-gray-100: #E9ECEF;
 /* ... */
---color-gray-900: #000000;
+--color-gray-900: #0A0A0A;
 ```
 
 ### Typografie
