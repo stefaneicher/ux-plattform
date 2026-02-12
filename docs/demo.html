@@ -117,10 +117,6 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .icon-button:active {
-            transform: scale(0.95);
-        }
-
         /* Ripple animation */
         @keyframes ripple {
             0% {
@@ -967,7 +963,6 @@
             });
 
             // Top bar button animations and functionality
-            const topBarButtons = document.querySelectorAll('.top-bar .icon-button');
             
             // Create ripple effect on click
             function createRipple(event) {
@@ -1047,7 +1042,6 @@
 
             // Menu button also gets ripple effect
             if (menuBtn) {
-                const originalMenuHandler = menuBtn.onclick;
                 menuBtn.addEventListener('click', function(e) {
                     createRipple(e);
                 });
