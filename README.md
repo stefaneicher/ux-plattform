@@ -390,6 +390,35 @@ Beiträge sind willkommen! Bitte lies unseren [Contributing Guide](./CONTRIBUTIN
 4. **Development**: Implementation + Storybook
 5. **Release**: Semantic Versioning (Major.Minor.Patch)
 
+## 🤖 GitHub Copilot MCP Integration
+
+Dieses Repository ist mit **MCP (Model Context Protocol)** für GitHub Copilot konfiguriert. MCP ermöglicht es GitHub Copilot, direkt mit externen Tools wie Render.com zu interagieren.
+
+### 📦 Konfigurierte MCP Server
+
+- **Render MCP Server** - Direkter Zugriff auf Render.com Deployments
+  - Services verwalten
+  - Deployment-Status prüfen
+  - Logs anzeigen
+  - Environment Variables verwalten
+
+### 🚀 Setup
+
+1. **Render API Key erhalten**: [Render Dashboard](https://dashboard.render.com/u/settings#api-keys)
+2. **Environment Variable setzen**:
+   ```bash
+   export RENDER_API_KEY="your_api_key_here"
+   ```
+3. **VS Code neu laden**
+
+Vollständige Anleitung: [.github/copilot/README.md](./.github/copilot/README.md)
+
+### 💡 Beispiel-Prompts
+
+- "Zeige mir den Status meiner Render Services"
+- "Was sind die neuesten Logs für den Backend Service?"
+- "Liste alle meine Render Deployments"
+
 ## 🔧 Technologie-Stack
 
 ### Backend
