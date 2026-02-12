@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
 
 // Material Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -34,6 +35,7 @@ import { ClaimsModule } from './claims/claims.module';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    LayoutModule,
     
     // Material Modules
     MatToolbarModule,
