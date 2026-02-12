@@ -447,9 +447,16 @@ curl https://your-app.onrender.com/health
 - Backend: `ghcr.io/stefaneicher/ux-plattform-backend:latest`
 
 **Dokumentation:**
-- 📖 [Release Guide](./RELEASE_GUIDE.md) - Wie man Releases erstellt
-- 📖 [Deployment Guide](./DEPLOYMENT_GUIDE.md) - Deployment Optionen
+- 📖 [Quick Start Releases](./QUICKSTART_RELEASES.md) - Schnellanleitung für Releases
+- 📖 [Release Guide](./RELEASE_GUIDE.md) - Detaillierte Release-Dokumentation
+- 📖 [Deployment Guide](./DEPLOYMENT_GUIDE.md) - Alle Deployment-Optionen
 - 📖 [Changelog](./CHANGELOG.md) - Version History
+
+**Helper Script:**
+```bash
+# Einfacher Release-Erstellung mit Script
+./scripts/create-release.sh v1.0.0 "Version 1.0.0" "Initial release"
+```
 
 ### Lokale Entwicklung mit Docker
 
