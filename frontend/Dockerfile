@@ -6,14 +6,14 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
+# Install ALL dependencies (including devDependencies for build)
 RUN npm ci --prefer-offline --no-audit
 
 # Copy source code
 COPY . .
 
-# Build the application for production
-RUN npm run build
+# Build the application for production using npx to ensure ng is found
+RUN npx ng build
 
 # Production stage with nginx
 FROM nginx:alpine
@@ -21,8 +21,8 @@ FROM nginx:alpine
 # Copy custom nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy built application from builder
-COPY --from=builder /app/dist/frontend /usr/share/nginx/html
+# Copy built application from builder (output is in /app/dist based on angular.json)
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port
 EXPOSE 80

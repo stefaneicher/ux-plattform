@@ -8,11 +8,12 @@
     {
       "type": "web",
       "name": "frontend",
-      "env": "static",
+      "runtime": "image",
       "region": "frankfurt",
       "plan": "starter",
-      "buildCommand": "cd frontend && npm ci && npm run build",
-      "staticPublishPath": "frontend/dist/frontend",
+      "image": {
+        "url": "ghcr.io/stefaneicher/ux-plattform-frontend:latest"
+      },
       "routes": [
         {
           "type": "rewrite",
@@ -25,16 +26,18 @@
           "key": "NODE_ENV",
           "value": "production"
         }
-      ]
+      ],
+      "healthCheckPath": "/health"
     },
     {
       "type": "web",
       "name": "backend",
-      "env": "node",
+      "runtime": "image",
       "region": "frankfurt",
       "plan": "starter",
-      "buildCommand": "cd backend && npm ci && npm run build",
-      "startCommand": "cd backend && npm start",
+      "image": {
+        "url": "ghcr.io/stefaneicher/ux-plattform-backend:latest"
+      },
       "envVars": [
         {
           "key": "PORT",
