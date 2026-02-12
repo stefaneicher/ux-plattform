@@ -1,252 +1,227 @@
 #!/usr/bin/env node
 
-/**
- * Build Storybook
- * Generates a static Storybook site
- */
-
 const fs = require('fs');
 const path = require('path');
 
 // Configuration
 const COMPANY_NAME = 'CSS Insurance';
 const PLATFORM_NAME = 'Enterprise UX Platform';
-
 const OUTPUT_DIR = path.join(__dirname, '../dist/storybook');
-const TOKENS_PATH = path.join(__dirname, '../dist/tokens.css');
 
-console.log('📚 Building Storybook...');
+console.log('📚 Building Documentation Site...');
 
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
-// Read CSS tokens if available
-let cssTokens = '';
-if (fs.existsSync(TOKENS_PATH)) {
-  cssTokens = fs.readFileSync(TOKENS_PATH, 'utf8');
+// Copy demo.html to output
+const demoSourcePath = path.join(__dirname, '../docs/demo.html');
+if (fs.existsSync(demoSourcePath)) {
+  fs.copyFileSync(demoSourcePath, path.join(OUTPUT_DIR, 'demo.html'));
+  console.log('✅ Copied demo.html');
 }
 
-// Generate index.html with embedded styles
+// Read design tokens
+const tokensPath = path.join(__dirname, '../libs/design-tokens/tokens.json');
+const tokens = JSON.parse(fs.readFileSync(tokensPath, 'utf8'));
+
+// Generate comprehensive index HTML
 const html = `<!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${PLATFORM_NAME} - Storybook</title>
+  <title>${PLATFORM_NAME} - ${COMPANY_NAME}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    ${cssTokens}
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: var(--typography-fontFamily-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-      line-height: var(--typography-lineHeight-normal, 1.5);
-      color: var(--color-neutral-800, #212529);
-      background: var(--color-neutral-50, #F8F9FA);
-      padding: 2rem;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: white;
-      border-radius: var(--borderRadius-lg, 0.5rem);
-      box-shadow: var(--elevation-md, 0 4px 6px rgba(0, 0, 0, 0.1));
-      padding: 3rem;
-    }
-    
-    h1 {
-      font-family: var(--typography-fontFamily-heading, 'Inter', sans-serif);
-      font-size: var(--typography-fontSize-4xl, 2.25rem);
-      font-weight: var(--typography-fontWeight-bold, 700);
-      color: var(--color-brand-primary, #0066CC);
-      margin-bottom: 1rem;
-    }
-    
-    h2 {
-      font-size: var(--typography-fontSize-2xl, 1.5rem);
-      font-weight: var(--typography-fontWeight-semibold, 600);
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: var(--color-neutral-700, #343A40);
-    }
-    
-    p {
-      margin-bottom: 1rem;
-      color: var(--color-neutral-600, #495057);
-    }
-    
-    .badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: var(--borderRadius-full, 9999px);
-      font-size: var(--typography-fontSize-sm, 0.875rem);
-      font-weight: var(--typography-fontWeight-medium, 500);
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .badge-primary {
-      background: var(--color-brand-primary, #0066CC);
-      color: white;
-    }
-    
-    .badge-success {
-      background: var(--color-semantic-success, #28A745);
-      color: white;
-    }
-    
-    .badge-info {
-      background: var(--color-semantic-info, #17A2B8);
-      color: white;
-    }
-    
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .card {
-      background: var(--color-neutral-50, #F8F9FA);
-      padding: 1.5rem;
-      border-radius: var(--borderRadius-md, 0.375rem);
-      border-left: 4px solid var(--color-brand-primary, #0066CC);
-    }
-    
-    .card h3 {
-      font-size: var(--typography-fontSize-lg, 1.125rem);
-      font-weight: var(--typography-fontWeight-semibold, 600);
-      margin-bottom: 0.5rem;
-      color: var(--color-neutral-800, #212529);
-    }
-    
-    .card p {
-      font-size: var(--typography-fontSize-sm, 0.875rem);
-      color: var(--color-neutral-600, #495057);
-    }
-    
-    .color-swatch {
-      display: inline-block;
-      width: 3rem;
-      height: 3rem;
-      border-radius: var(--borderRadius-base, 0.25rem);
-      margin-right: 1rem;
-      box-shadow: var(--elevation-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
-    }
-    
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    
-    li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--color-neutral-200, #DEE2E6);
-    }
-    
-    li:last-child {
-      border-bottom: none;
-    }
-    
-    code {
-      font-family: var(--typography-fontFamily-monospace, 'Courier New', monospace);
-      background: var(--color-neutral-100, #E9ECEF);
-      padding: 0.125rem 0.375rem;
-      border-radius: var(--borderRadius-sm, 0.125rem);
-      font-size: var(--typography-fontSize-sm, 0.875rem);
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+    header { background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%); color: white; padding: 3rem 2rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    header h1 { font-size: 3rem; font-weight: 300; margin-bottom: 0.5rem; }
+    header p { font-size: 1.3rem; opacity: 0.9; }
+    .header-meta { font-size: 0.9rem; opacity: 0.8; margin-top: 1rem; }
+    .container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+    .hero-section { background: white; border-radius: 8px; padding: 3rem 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+    .hero-section h2 { font-size: 2rem; font-weight: 400; margin-bottom: 1rem; color: #1976d2; }
+    .hero-section p { font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto 2rem; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 32px; border: none; border-radius: 4px; font-size: 1rem; font-weight: 500; text-decoration: none; cursor: pointer; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn-primary { background: #1976d2; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    .btn-primary:hover { background: #1565c0; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+    .btn-secondary { background: white; color: #1976d2; border: 2px solid #1976d2; }
+    .btn-secondary:hover { background: #f5f5f5; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .feature-card { background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .feature-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: white; font-size: 28px; }
+    .feature-card h3 { font-size: 1.3rem; font-weight: 500; margin-bottom: 0.75rem; color: #1976d2; }
+    .feature-card p { color: #666; line-height: 1.6; }
+    .section { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .section h2 { font-size: 1.8rem; font-weight: 400; margin-bottom: 1.5rem; color: #1976d2; display: flex; align-items: center; gap: 12px; }
+    .token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .token-item { padding: 1rem; border: 1px solid #e0e0e0; border-radius: 4px; transition: box-shadow 0.2s; }
+    .token-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .token-name { font-weight: 600; color: #1976d2; margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .token-value { font-family: 'Courier New', monospace; font-size: 0.85rem; color: #666; }
+    .color-swatch { width: 100%; height: 60px; border-radius: 4px; margin-top: 0.5rem; border: 1px solid #e0e0e0; }
+    .spacing-demo { background: #1976d2; height: 20px; border-radius: 2px; }
+    footer { background: #333; color: white; text-align: center; padding: 2rem; margin-top: 4rem; }
+    footer a { color: #42a5f5; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      .hero-section h2 { font-size: 1.5rem; }
+      .features-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>${PLATFORM_NAME}</h1>
+    <p>${COMPANY_NAME}</p>
+    <p>Design System mit Angular Material für Desktop & Mobile</p>
+    <div class="header-meta">Version 1.0.0 | Februar 2026</div>
+  </header>
+
   <div class="container">
-    <h1>🎨 ${PLATFORM_NAME}</h1>
-    <p><strong>State-of-the-art Design System for ${COMPANY_NAME} (2026)</strong></p>
-    
-    <div>
-      <span class="badge badge-primary">Design Tokens</span>
-      <span class="badge badge-success">Components</span>
-      <span class="badge badge-info">Accessible</span>
+    <div class="hero-section">
+      <h2>Firmenweites UX Design System</h2>
+      <p>Vollständige Enterprise-Lösung mit Angular Material, Design Tokens, Komponenten-Bibliothek, Navigation-Patterns und UX-Guidelines für konsistente, zugängliche und wartbare Anwendungen.</p>
+      <div class="cta-buttons">
+        <a href="demo.html" class="btn btn-primary">
+          <span class="material-icons">visibility</span>
+          Live Demo ansehen
+        </a>
+        <a href="https://github.com/stefaneicher/ux-platform" class="btn btn-secondary" target="_blank">
+          <span class="material-icons">code</span>
+          GitHub Repository
+        </a>
+      </div>
     </div>
-    
-    <h2>📦 What's Included</h2>
-    
-    <div class="grid">
-      <div class="card">
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><span class="material-icons">palette</span></div>
         <h3>Design Tokens</h3>
-        <p>Platform-agnostic design tokens for colors, typography, spacing, and more. Generated as CSS variables and TypeScript.</p>
+        <p>Plattform-agnostische Design-Tokens für Farben, Typografie, Spacing, Elevation und mehr - konsistent über alle Anwendungen.</p>
       </div>
-      
-      <div class="card">
-        <h3>Component Library</h3>
-        <p>Reusable UI components built with accessibility and enterprise requirements in mind.</p>
+      <div class="feature-card">
+        <div class="feature-icon"><span class="material-icons">widgets</span></div>
+        <h3>Komponenten-Bibliothek</h3>
+        <p>3-Layer-Architektur mit Angular Material Basis, CSS-Wrappern und Business-spezifischen Komponenten.</p>
       </div>
-      
-      <div class="card">
-        <h3>UX Patterns</h3>
-        <p>Insurance-specific patterns for Claims, Contracts, Customer 360, and more.</p>
+      <div class="feature-card">
+        <div class="feature-icon"><span class="material-icons">navigation</span></div>
+        <h3>Navigation Patterns</h3>
+        <p>App Shell mit Top Bar, Side Navigation, Breadcrumbs und Tabs - responsive für Desktop und Mobile.</p>
       </div>
-      
-      <div class="card">
-        <h3>Accessibility</h3>
-        <p>WCAG AA compliance by default with automated testing and keyboard navigation support.</p>
+      <div class="feature-card">
+        <div class="feature-icon"><span class="material-icons">description</span></div>
+        <h3>Seiten-Blueprints</h3>
+        <p>Fertige Templates für Dashboard, Listen, Detail-Seiten, Formulare, Wizard und mehr.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><span class="material-icons">accessibility</span></div>
+        <h3>WCAG AA konform</h3>
+        <p>Accessibility von Anfang an - Keyboard Navigation, Screen Reader Support und Focus Management.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><span class="material-icons">devices</span></div>
+        <h3>Responsive Design</h3>
+        <p>Desktop-optimiert, Mobile-fähig - mit angepassten Layouts und Interaktionsmustern für alle Bildschirmgrößen.</p>
       </div>
     </div>
-    
-    <h2>🎨 Design Tokens Preview</h2>
-    
-    <h3 style="margin-top: 1.5rem; font-size: var(--typography-fontSize-xl, 1.25rem);">Brand Colors</h3>
-    <div style="margin: 1rem 0;">
-      <span class="color-swatch" style="background: var(--color-brand-primary, #0066CC);"></span>
-      <code>--color-brand-primary</code>
+
+    <div class="section">
+      <h2><span class="material-icons">palette</span> Design Tokens - Farben</h2>
+      <div class="token-grid">
+        ${Object.entries(tokens.color).map(([key, value]) => `
+          <div class="token-item">
+            <div class="token-name">color.${key}</div>
+            <div class="token-value">${value}</div>
+            <div class="color-swatch" style="background-color: ${value}"></div>
+          </div>
+        `).join('')}
+      </div>
     </div>
-    <div style="margin: 1rem 0;">
-      <span class="color-swatch" style="background: var(--color-brand-secondary, #004080);"></span>
-      <code>--color-brand-secondary</code>
+
+    <div class="section">
+      <h2><span class="material-icons">straighten</span> Design Tokens - Spacing (8pt Grid)</h2>
+      <div class="token-grid">
+        ${Object.entries(tokens.spacing).map(([key, value]) => `
+          <div class="token-item">
+            <div class="token-name">spacing.${key}</div>
+            <div class="token-value">${value}</div>
+            <div class="spacing-demo" style="width: ${value}"></div>
+          </div>
+        `).join('')}
+      </div>
     </div>
-    <div style="margin: 1rem 0;">
-      <span class="color-swatch" style="background: var(--color-brand-accent, #FF6B35);"></span>
-      <code>--color-brand-accent</code>
+
+    <div class="section">
+      <h2><span class="material-icons">text_fields</span> Design Tokens - Typografie</h2>
+      <div class="token-grid">
+        ${Object.entries(tokens.typography.fontSize).map(([key, value]) => `
+          <div class="token-item">
+            <div class="token-name">typography.fontSize.${key}</div>
+            <div class="token-value">${value}</div>
+            <div style="font-size: ${value}; margin-top: 0.5rem;">Sample Text</div>
+          </div>
+        `).join('')}
+      </div>
     </div>
-    
-    <h3 style="margin-top: 1.5rem; font-size: var(--typography-fontSize-xl, 1.25rem);">Semantic Colors</h3>
-    <div style="margin: 1rem 0;">
-      <span class="color-swatch" style="background: var(--color-semantic-success, #28A745);"></span>
-      <code>--color-semantic-success</code>
+
+    <div class="section">
+      <h2><span class="material-icons">crop_square</span> Design Tokens - Border Radius</h2>
+      <div class="token-grid">
+        ${Object.entries(tokens.borderRadius).map(([key, value]) => `
+          <div class="token-item">
+            <div class="token-name">borderRadius.${key}</div>
+            <div class="token-value">${value}</div>
+            <div style="width: 60px; height: 60px; background: #1976d2; border-radius: ${value}; margin-top: 0.5rem;"></div>
+          </div>
+        `).join('')}
+      </div>
     </div>
-    <div style="margin: 1rem 0;">
-      <span class="color-swatch" style="background: var(--color-semantic-warning, #FFC107);"></span>
-      <code>--color-semantic-warning</code>
+
+    <div class="section">
+      <h2><span class="material-icons">menu_book</span> Dokumentation</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>UX Playbook</h3>
+          <p>Vollständiger Leitfaden mit Design-Prinzipien, Patterns und Best Practices.</p>
+          <a href="https://github.com/stefaneicher/ux-platform/blob/main/docs/ux-playbook/README.md" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">Playbook öffnen</a>
+        </div>
+        <div class="feature-card">
+          <h3>Navigation Map</h3>
+          <p>Site Map, Navigation Patterns und User Flows für die gesamte Plattform.</p>
+          <a href="https://github.com/stefaneicher/ux-platform/blob/main/docs/ux-playbook/navigation.md" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">Navigation öffnen</a>
+        </div>
+        <div class="feature-card">
+          <h3>Komponenten-Katalog</h3>
+          <p>Vollständige Referenz aller Komponenten mit Code-Beispielen.</p>
+          <a href="https://github.com/stefaneicher/ux-platform/blob/main/docs/ux-playbook/components.md" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;">Komponenten öffnen</a>
+        </div>
+      </div>
     </div>
-    <div style="margin: 1rem 0;">
-      <span class="color-swatch" style="background: var(--color-semantic-error, #DC3545);"></span>
-      <code>--color-semantic-error</code>
-    </div>
-    
-    <h2>🚀 Getting Started</h2>
-    
-    <ul>
-      <li>📚 <strong>View tokens:</strong> Check <code>libs/design-tokens/tokens.json</code></li>
-      <li>🎨 <strong>Use CSS variables:</strong> Import <code>dist/tokens.css</code></li>
-      <li>📦 <strong>TypeScript:</strong> Import from <code>dist/tokens.ts</code></li>
-      <li>♿ <strong>Accessibility:</strong> All components are WCAG AA compliant</li>
-    </ul>
-    
-    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-neutral-200, #DEE2E6); color: var(--color-neutral-500, #6C757D); font-size: var(--typography-fontSize-sm, 0.875rem);">
-      Built with ❤️ for ${COMPANY_NAME} | Generated: ${new Date().toISOString()}
-    </p>
   </div>
+
+  <footer>
+    <p>&copy; 2026 ${COMPANY_NAME}. All rights reserved.</p>
+    <p>
+      <a href="https://github.com/stefaneicher/ux-platform" target="_blank">GitHub</a> |
+      <a href="https://github.com/stefaneicher/ux-platform/issues" target="_blank">Issues</a> |
+      <a href="https://github.com/stefaneicher/ux-platform/blob/main/LICENSE" target="_blank">License</a>
+    </p>
+  </footer>
 </body>
 </html>`;
 
+// Write index HTML
 fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), html);
 
-console.log('✅ Storybook generated:', OUTPUT_DIR);
-console.log('🎉 Storybook built successfully!');
+console.log('✅ Documentation site built successfully');
+console.log(`📦 Output: ${OUTPUT_DIR}/index.html`);
+console.log(`📦 Demo: ${OUTPUT_DIR}/demo.html`);
