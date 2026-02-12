@@ -1,0 +1,103 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "dependencyDashboard": true,
+  "labels": [
+    "dependencies",
+    "automated"
+  ],
+  "assignees": [
+    "stefaneicher"
+  ],
+  "reviewers": [
+    "stefaneicher"
+  ],
+  "schedule": [
+    "before 10am on monday"
+  ],
+  "timezone": "Europe/Zurich",
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 0,
+  "semanticCommits": "enabled",
+  "commitMessagePrefix": "chore(deps):",
+  "commitMessageAction": "update",
+  "commitMessageTopic": "{{depName}}",
+  "separateMajorMinor": true,
+  "separateMinorPatch": false,
+  "rangeStrategy": "bump",
+  "ignoreDeps": [],
+  "packageRules": [
+    {
+      "description": "Automerge patch and minor updates",
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "platformAutomerge": true
+    },
+    {
+      "description": "Disable automerge for major updates - require manual review",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "automerge": false,
+      "platformAutomerge": false,
+      "labels": [
+        "dependencies",
+        "major-update"
+      ]
+    },
+    {
+      "description": "Group all non-major dependencies updates into a single PR",
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
+    },
+    {
+      "description": "GitHub Actions updates",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "automerge": true,
+      "platformAutomerge": true,
+      "labels": [
+        "github-actions",
+        "dependencies"
+      ],
+      "commitMessagePrefix": "ci:"
+    },
+    {
+      "description": "Development dependencies",
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "automerge": true,
+      "platformAutomerge": true,
+      "commitMessagePrefix": "chore(deps-dev):"
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security",
+      "dependencies"
+    ],
+    "automerge": false
+  }
+}
