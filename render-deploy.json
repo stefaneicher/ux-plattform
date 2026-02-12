@@ -79,7 +79,7 @@
     {
       "name": "mongodb",
       "databaseName": "insurance",
-      "plan": "starter"
+      "plan": "free"
     }
   ]
 }
