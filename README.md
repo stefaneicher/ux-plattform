@@ -370,6 +370,14 @@ Das Repository ist bereits für automatisches Deployment zu GitHub Pages konfigu
 2. **GitHub Pages URL**: [https://stefaneicher.github.io/ux-platform/](https://stefaneicher.github.io/ux-platform/)
 3. **Demo-App URL**: [https://stefaneicher.github.io/ux-platform/demo.html](https://stefaneicher.github.io/ux-platform/demo.html)
 
+> ⚠️ **Wichtig:** Für das erste Deployment muss GitHub Pages aktiviert werden:
+> 
+> 1. Gehe zu [Repository Settings → Pages](https://github.com/stefaneicher/ux-plattform/settings/pages)
+> 2. Wähle unter "Source" → **"GitHub Actions"**
+> 3. Klicke "Save"
+> 
+> **Deployment funktioniert nicht?** → Siehe [GITHUB_PAGES_TROUBLESHOOTING.md](./GITHUB_PAGES_TROUBLESHOOTING.md)
+
 Siehe auch [Design System Deployment Guide](./docs/deployment.md) für weitere Optionen.
 
 ## 🤝 Contributing
