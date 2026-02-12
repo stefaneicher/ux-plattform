@@ -1,0 +1,101 @@
+@startuml Complete Business Process
+
+actor Customer
+actor Agent
+actor Admin
+participant "Offers System" as Offers
+participant "Policies System" as Policies
+participant "Claims System" as Claims
+database MongoDB
+
+== Offer Creation & Calculation ==
+Customer -> Agent: Request insurance quote
+Agent -> Offers: Create offer
+activate Offers
+Offers -> Offers: Calculate premium\n(coverage, deductible, risk)
+Offers -> MongoDB: Save offer (DRAFT)
+Offers --> Agent: Return calculated offer
+deactivate Offers
+Agent -> Customer: Present offer
+
+== Offer Acceptance ==
+Customer -> Agent: Accept offer
+Agent -> Offers: Update status (ACCEPTED)
+activate Offers
+Offers -> MongoDB: Update offer
+Offers --> Agent: Offer accepted
+deactivate Offers
+
+== Policy Creation ==
+Agent -> Policies: Create policy from offer
+activate Policies
+Policies -> Policies: Generate policy number
+Policies -> MongoDB: Save policy (PENDING)
+Policies --> Agent: Policy created
+deactivate Policies
+
+Admin -> Policies: Review and activate
+activate Policies
+Policies -> MongoDB: Update status (ACTIVE)
+Policies --> Admin: Policy activated
+deactivate Policies
+
+== Incident Occurs ==
+Customer -> Customer: Incident occurs
+
+== Claim Submission ==
+Customer -> Agent: Report claim
+Agent -> Claims: Submit claim
+activate Claims
+Claims -> Claims: Generate claim number
+Claims -> Policies: Verify policy is active
+Policies --> Claims: Policy valid
+Claims -> MongoDB: Save claim (SUBMITTED)
+Claims --> Agent: Claim submitted
+deactivate Claims
+Agent -> Customer: Claim submitted successfully
+
+== Claim Review ==
+Admin -> Claims: Start claim review
+activate Claims
+Claims -> MongoDB: Update status (UNDER_REVIEW)
+Claims --> Admin: Review started
+deactivate Claims
+
+Admin -> Claims: Review documents
+Admin -> Claims: Approve/Reject claim
+activate Claims
+alt Approved
+  Claims -> MongoDB: Update status (APPROVED)\nSet approved amount
+  Claims --> Admin: Claim approved
+else Rejected
+  Claims -> MongoDB: Update status (REJECTED)\nSet rejection reason
+  Claims --> Admin: Claim rejected
+end
+deactivate Claims
+
+== Payment Processing ==
+alt Claim Approved
+  Admin -> Claims: Process payment
+  activate Claims
+  Claims -> MongoDB: Update status (PAID)\nSet payment date
+  Claims --> Admin: Payment processed
+  deactivate Claims
+  
+  Admin -> Claims: Close claim
+  activate Claims
+  Claims -> MongoDB: Update status (CLOSED)
+  Claims --> Admin: Claim closed
+  deactivate Claims
+  
+  Agent -> Customer: Notify payment sent
+end
+
+== Billing ==
+Agent -> Claims: Calculate billing for policy
+activate Claims
+Claims -> MongoDB: Sum approved claims
+Claims --> Agent: Billing total
+deactivate Claims
+
+@enduml

@@ -1,0 +1,72 @@
+<div class="page-header">
+  <h1>Neue Leistung / Schadensfall erfassen</h1>
+</div>
+
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Policen-ID</mat-label>
+          <input matInput formControlName="policyId" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Policen-Nummer</mat-label>
+          <input matInput formControlName="policyNumber" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Kunden-ID</mat-label>
+          <input matInput formControlName="customerId" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Kundenname</mat-label>
+          <input matInput formControlName="customerName" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Schadentyp</mat-label>
+          <mat-select formControlName="claimType" required>
+            <mat-option *ngFor="let type of claimTypes" [value]="type.value">
+              {{ type.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Schadenbetrag (CHF)</mat-label>
+          <input matInput type="number" formControlName="claimAmount" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Schadendatum</mat-label>
+          <input matInput [matDatepicker]="incidentPicker" formControlName="incidentDate" required>
+          <mat-datepicker-toggle matSuffix [for]="incidentPicker"></mat-datepicker-toggle>
+          <mat-datepicker #incidentPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Beschreibung</mat-label>
+          <textarea matInput formControlName="description" rows="4" required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="claimForm.invalid">
+          <mat-icon>save</mat-icon>
+          Leistung erfassen
+        </button>
+        <button mat-button type="button" (click)="cancel()">
+          Abbrechen
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

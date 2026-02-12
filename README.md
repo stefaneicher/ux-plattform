@@ -3,45 +3,84 @@
 [![CI](https://github.com/stefaneicher/ux-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/stefaneicher/ux-platform/actions/workflows/ci.yml)
 [![Deploy Storybook](https://github.com/stefaneicher/ux-platform/actions/workflows/deploy.yml/badge.svg)](https://github.com/stefaneicher/ux-platform/actions/workflows/deploy.yml)
 
-**Firmenweites UX Design System mit Angular Material für Desktop & Mobile**
+**Full-Stack Insurance Demo Application mit DDD-Architektur**
 
-> State-of-the-art Enterprise UX Platform für CSS Insurance mit umfassender Dokumentation, Design Tokens, Komponenten-Bibliothek und interaktiver Demo (2026)
+> State-of-the-art Enterprise Insurance Platform mit Angular Frontend, NestJS Backend, Domain-Driven Design, MongoDB, und vollständiger Dokumentation (2026)
 
 ## 🎯 Übersicht
 
-Diese Plattform bietet eine vollständige Enterprise-Lösung für konsistente, zugängliche und wartbare Benutzeroberflächen:
+Diese Plattform ist eine vollständige Insurance Demo-Anwendung mit Domain-Driven Design und modernen Technologien:
 
 ### Kernfunktionen
 
-- ✅ **Design Token System** - Plattform-agnostische Design-Tokens (Farben, Typografie, Spacing, etc.)
-- ✅ **Angular Material Integration** - 3-Layer Komponenten-Architektur mit CSS-Wrappern
-- ✅ **App Shell & Navigation** - Responsive Layout mit Top Bar, Side Nav, Breadcrumbs und Tabs
-- ✅ **Seiten-Blueprints** - Fertige Templates für Dashboard, Listen, Detail, Formulare, Wizard
-- ✅ **UX Playbook** - Comprehensive Dokumentation mit Patterns und Best Practices
-- ✅ **WCAG AA konform** - Accessibility von Anfang an mit Keyboard Navigation und Screen Reader Support
-- ✅ **Responsive Design** - Desktop-optimiert, Mobile-fähig
-- ✅ **Live Demo** - Interaktive Demo-Anwendung mit allen Features
+- ✅ **Full-Stack Application** - Angular Frontend + NestJS Backend
+- ✅ **Domain-Driven Design** - Drei Bounded Contexts (Offerten, Policen, Leistungen)
+- ✅ **Reactive REST API** - RxJS für Skalierung und Backpressure-Handling
+- ✅ **MongoDB Database** - NoSQL-Datenbank für flexible Datenmodelle
+- ✅ **Job Queue Management** - Bull & Redis für asynchrone Verarbeitung
+- ✅ **Angular Material UI** - Professional UI-Komponenten
+- ✅ **Design Token System** - Konsistente Design-Tokens
+- ✅ **Comprehensive Documentation** - Architektur, Business Prozesse, PlantUML Diagramme
+- ✅ **WCAG AA konform** - Accessibility von Anfang an
 
-### 🌟 Neu in Version 1.0
+### 🌟 Neu in Version 2.0
 
-- 🎨 Vollständiges Design System basierend auf Angular Material
-- 📱 Responsive Demo-Applikation mit realitätsnahen Beispielen
-- 📚 Umfassende UX-Dokumentation (Playbook, Navigation Map, Komponenten-Katalog)
-- 🏗️ 3-Layer-Architektur für maximale Wartbarkeit
-- ♿ WCAG AA Compliance mit Best Practices
+- 🏗️ **DDD Architecture** - Bounded Contexts für Offers, Policies, Claims
+- 🔄 **Reactive Programming** - RxJS Observables durchgehend
+- 🗄️ **MongoDB Integration** - Mongoose ODM mit Schemas
+- ⚡ **Job Queue** - Background processing mit Bull
+- 📊 **PlantUML Diagrams** - Context Map, Domain Models, Sequence Diagrams
+- 📚 **Business Process Documentation** - Kompletter Insurance Workflow
+- 🎨 **Professional UI** - Material Design mit Tabellen, Formularen, Navigation
 
 
 ## 🚀 Quick Start
 
-### Online Demo
+### Full Application
 
-**Sofort ausprobieren ohne Installation:**
+**Prerequisites:**
+- Node.js 18+
+- MongoDB 4.4+ (running on localhost:27017)
+- Redis 6+ (optional, for job queue)
 
+**Backend Setup:**
+```bash
+# Navigate to backend
+cd backend
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+
+# Start backend (development mode)
+npm run start:dev
+```
+
+Backend runs on: `http://localhost:3000`
+
+**Frontend Setup:**
+```bash
+# Navigate to frontend
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start frontend (development mode)
+npm start
+```
+
+Frontend runs on: `http://localhost:4200`
+
+### Design System Only
+
+**Online Demo:**
 - **🌐 Live Demo**: [https://stefaneicher.github.io/ux-platform/demo.html](https://stefaneicher.github.io/ux-platform/demo.html)
 - **📚 Dokumentation**: [https://stefaneicher.github.io/ux-platform/](https://stefaneicher.github.io/ux-platform/)
 
-### Lokale Installation
-
+**Local Build:**
 ```bash
 # Repository klonen
 git clone https://github.com/stefaneicher/ux-platform.git
@@ -50,111 +89,136 @@ cd ux-platform
 # Dependencies installieren
 npm install
 
-# Projekt bauen
+# Design System bauen
 npm run build
-
-# Tests ausführen
-npm test
-
-# Linter ausführen
-npm run lint
 ```
-
-### Build-Ausgabe ansehen
-
-Nach dem Build finden Sie:
-
-- **Design Tokens**: `dist/tokens.css` und `dist/tokens.ts`
-- **Dokumentation**: `dist/storybook/index.html` (im Browser öffnen)
-- **Demo-App**: `dist/storybook/demo.html` (im Browser öffnen)
 
 ## 📦 Projekt-Struktur
 
 ```
 ux-platform/
+├── backend/                         # NestJS Backend API
+│   ├── src/
+│   │   ├── main.ts                  # Application entry point
+│   │   ├── app.module.ts            # Root module
+│   │   ├── offers/                  # Offers bounded context
+│   │   │   ├── offer.schema.ts      # Domain model
+│   │   │   ├── offers.service.ts    # Business logic
+│   │   │   ├── offers.controller.ts # REST endpoints
+│   │   │   └── offers.module.ts     # Module definition
+│   │   ├── policies/                # Policies bounded context
+│   │   └── claims/                  # Claims bounded context
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── README.md
+│
+├── frontend/                        # Angular Frontend
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── offers/              # Offers feature module
+│   │   │   ├── policies/            # Policies feature module
+│   │   │   ├── claims/              # Claims feature module
+│   │   │   ├── app.component.ts     # Root component
+│   │   │   └── app.module.ts        # Root module
+│   │   ├── environments/            # Environment configs
+│   │   ├── index.html
+│   │   └── main.ts
+│   ├── angular.json
+│   ├── package.json
+│   └── README.md
+│
 ├── docs/
-│   ├── demo.html                    # Interaktive Demo-Anwendung
-│   ├── ux-playbook/
-│   │   ├── README.md                # Hauptdokumentation: Design-Prinzipien, Tokens, Patterns
-│   │   ├── navigation.md            # Navigation Map, Site Map, User Flows
-│   │   └── components.md            # Vollständiger Komponenten-Katalog
-│   ├── deployment.md                # Deployment-Strategien
-│   ├── github-actions.md            # CI/CD Dokumentation
-│   └── quick-start.md               # Getting Started Guide
+│   ├── ARCHITECTURE.md              # Complete architecture documentation
+│   ├── diagrams/                    # PlantUML diagrams
+│   │   ├── context-map.puml         # DDD context map
+│   │   ├── domain-model-*.puml      # Domain models
+│   │   └── business-process.puml    # Business process flow
+│   ├── ux-playbook/                 # UX documentation
+│   ├── deployment.md
+│   └── quick-start.md
 │
 ├── libs/
 │   └── design-tokens/
-│       └── tokens.json              # Design Token Definitionen
-│
-├── src/
-│   ├── index.html                   # Angular App Entry
-│   └── styles.css                   # Global Styles mit Design Tokens
+│       └── tokens.json              # Design Token definitions
 │
 ├── scripts/
-│   ├── build-tokens.js              # Token-Generator (CSS + TypeScript)
-│   └── build-storybook.js           # Dokumentations-Site Generator
+│   ├── build-tokens.js              # Token generator
+│   └── build-storybook.js           # Documentation generator
 │
-├── dist/                            # Build-Ausgabe (gitignored)
-│   ├── tokens.css                   # CSS Custom Properties
-│   ├── tokens.ts                    # TypeScript Tokens
-│   └── storybook/                   # Statische Dokumentation
-│       ├── index.html               # Hauptseite mit Tokens
-│       └── demo.html                # Demo-Anwendung
-│
-├── .github/
-│   └── workflows/
-│       ├── ci.yml                   # Build & Test Pipeline
-│       ├── deploy.yml               # GitHub Pages Deployment
-│       ├── codeql.yml               # Security Scanning
-│       └── dependency-review.yml    # Dependency Checks
-│
-├── package.json                     # NPM-Konfiguration
-├── README.md                        # Diese Datei
-├── CONTRIBUTING.md                  # Contribution Guidelines
-└── LICENSE                          # MIT License
+└── package.json                     # Root package for design system
 ```
 
 
 ## 🏗️ Architektur
 
-### Design System Layers
-
-```
-┌────────────────────────────────────────────────┐
-│  Layer 3: Business Components                  │
-│  (css-customer-card, css-policy-header, etc.)  │
-├────────────────────────────────────────────────┤
-│  Layer 2: CSS Design System Wrapper            │
-│  (css-button, css-table, css-form-field)       │
-├────────────────────────────────────────────────┤
-│  Layer 1: Angular Material Foundation          │
-│  (mat-button, mat-table, mat-form-field)       │
-└────────────────────────────────────────────────┘
-```
-
-### Für folgende Use Cases optimiert:
-
-- 🏢 **Regulated Enterprise Umgebungen** - Versicherungen, Banken, Healthcare
-- 📊 **Multi-Product Portfolios** - Mehrere Anwendungen mit einheitlichem Look & Feel
-- 💻 **Desktop + Mobile + Tablet** - Responsive Design mit optimierten Layouts
-- 🔄 **Long Lifecycle Applications** - Wartbar über Jahre hinweg
-
-### Navigation & App Shell
+### System Architecture
 
 ```
 ┌─────────────────────────────────────────────────┐
-│ Top Bar: Logo | Global Search | Notifications  │
+│            Angular Frontend (Port 4200)         │
+│  ┌──────────┬──────────┬──────────┐             │
+│  │ Offers   │ Policies │ Claims   │             │
+│  │ Module   │ Module   │ Module   │             │
+│  └──────────┴──────────┴──────────┘             │
+│         │         │         │                    │
+│         └─────────┴─────────┘                    │
+│                   │                              │
+│              HTTP/REST                           │
+└───────────────────┼───────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────┐
+│         NestJS Backend (Port 3000)              │
+│  ┌──────────────────────────────────┐           │
+│  │       API Controllers            │           │
+│  └──────────────────────────────────┘           │
+│  ┌──────────┬──────────┬──────────┐             │
+│  │ Offers   │ Policies │ Claims   │             │
+│  │ Service  │ Service  │ Service  │             │
+│  └──────────┴──────────┴──────────┘             │
+│         │         │         │                    │
+│         └─────────┴─────────┘                    │
+│                   │                              │
+└───────────────────┼───────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────┐
+│              MongoDB Database                   │
+│  ┌──────────┬──────────┬──────────┐             │
+│  │ Offers   │ Policies │ Claims   │             │
+│  │Collection│Collection│Collection│             │
+│  └──────────┴──────────┴──────────┘             │
 └─────────────────────────────────────────────────┘
-┌──────────┬──────────────────────────────────────┐
-│          │ Page Header: Breadcrumbs | Actions   │
-│ Side Nav ├──────────────────────────────────────┤
-│          │                                      │
-│ Module 1 │ Content Area                         │
-│ Module 2 │ (Dashboard, Liste, Detail, Form...)  │
-│ Module 3 │                                      │
-│          │                                      │
-└──────────┴──────────────────────────────────────┘
+
+                    +
+┌─────────────────────────────────────────────────┐
+│         Bull Job Queue (Redis)                  │
+│  - Premium calculations                         │
+│  - Payment processing                           │
+│  - Email notifications                          │
+└─────────────────────────────────────────────────┘
 ```
+
+### Domain-Driven Design (DDD)
+
+**Three Bounded Contexts:**
+
+1. **Offers Context (Offerten)**
+   - Calculate insurance premiums
+   - Manage offer lifecycle
+   - Risk assessment
+
+2. **Policies Context (Policen)**
+   - Create policies from offers
+   - Policy activation and lifecycle
+   - Beneficiary management
+
+3. **Claims Context (Leistungen)**
+   - Process insurance claims
+   - Review workflow
+   - Payment and billing
+
+See [Complete Architecture Documentation](./docs/ARCHITECTURE.md) for details.
 
 ## 📚 Umfassende Dokumentation
 
@@ -291,53 +355,70 @@ Beiträge sind willkommen! Bitte lies unseren [Contributing Guide](./CONTRIBUTIN
 
 ## 🔧 Technologie-Stack
 
-- **Framework**: Angular 15+ (prepared for)
+### Backend
+- **Framework**: NestJS (Node.js + TypeScript)
+- **Database**: MongoDB with Mongoose ODM
+- **Reactive Programming**: RxJS
+- **Job Queue**: Bull (Redis-based)
+- **Validation**: class-validator, class-transformer
+
+### Frontend
+- **Framework**: Angular 17
 - **UI Library**: Angular Material
-- **Design Tokens**: CSS Custom Properties
-- **Styling**: CSS + SCSS
+- **State Management**: RxJS BehaviorSubjects
+- **Styling**: CSS + Material Theme
 - **Icons**: Material Icons
+
+### Design System
+- **Design Tokens**: JSON-based, CSS Custom Properties
 - **Fonts**: Roboto
 - **Build**: Node.js Scripts
+
+### DevOps
 - **CI/CD**: GitHub Actions
-- **Deployment**: GitHub Pages
-- **Documentation**: Markdown + HTML
+- **Deployment**: GitHub Pages (Design System)
+- **Containerization**: Docker-ready
+- **Monitoring**: Logging framework-ready
 
 ## 📈 Roadmap
 
-### Version 1.1 (Q2 2026)
-- [ ] Vollständige Angular-Anwendung mit Routing
-- [ ] Interaktive Storybook-Integration
-- [ ] Erweiterte Komponenten-Bibliothek
-- [ ] Figma-Plugin für Design-Token-Sync
+### Version 2.1 (Q2 2026)
+- [ ] User Authentication (JWT)
+- [ ] Role-Based Access Control (RBAC)
+- [ ] Document Upload for Claims
+- [ ] Email Notifications
+- [ ] PDF Report Generation
 
-### Version 1.2 (Q3 2026)
-- [ ] React/Vue Wrapper-Komponenten
-- [ ] Visual Regression Testing
+### Version 2.2 (Q3 2026)
+- [ ] Payment Gateway Integration
+- [ ] Advanced Analytics Dashboard
+- [ ] Real-time Notifications (WebSocket)
+- [ ] Audit Logging
 - [ ] Performance Monitoring
-- [ ] Dark Mode Support
 
-### Version 2.0 (Q4 2026)
-- [ ] Microfrontend-Architektur
-- [ ] Advanced Theming Engine
-- [ ] AI-powered UX Suggestions
-- [ ] Real-time Collaboration Tools
+### Version 3.0 (Q4 2026)
+- [ ] Microservices Architecture
+- [ ] Machine Learning Risk Assessment
+- [ ] Fraud Detection System
+- [ ] Mobile Apps (iOS/Android)
+- [ ] Multi-language Support (i18n)
 
 ## 📊 Metriken
 
-### Projekt-Statistik
+### Application Statistics
+- **Bounded Contexts**: 3 (Offers, Policies, Claims)
+- **API Endpoints**: 25+ REST endpoints
+- **Database Collections**: 3 MongoDB collections
+- **Frontend Modules**: 3 feature modules
+- **Components**: 10+ Angular components
+- **Design Tokens**: 150+ defined tokens
+- **Documentation**: 20,000+ words
+- **PlantUML Diagrams**: 7 architecture diagrams
 
-- **Komponenten**: 30+ wiederverwendbare Komponenten
-- **Design Tokens**: 150+ definierte Tokens
-- **Seiten-Templates**: 8 fertige Blueprints
-- **Dokumentation**: 15.000+ Wörter
-- **Code-Beispiele**: 50+ verwendbare Snippets
-
-### Build-Performance
-
-- Token-Generierung: < 1 Sekunde
-- Storybook-Build: < 1 Sekunde
-- Gesamt-Build: ~2 Sekunden
-- CI Workflow: ~2-3 Minuten
+### Code Statistics
+- **Backend**: ~5,000 lines TypeScript
+- **Frontend**: ~3,000 lines TypeScript/HTML/CSS
+- **Configuration**: ~1,000 lines JSON/YAML
 
 ## 🆘 Support
 

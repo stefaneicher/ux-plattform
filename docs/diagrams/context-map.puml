@@ -1,0 +1,60 @@
+@startuml DDD Context Map
+
+!define BOUNDED_CONTEXT_BG_COLOR #E3F2FD
+!define BOUNDED_CONTEXT_BORDER_COLOR #1976D2
+
+' Bounded Contexts
+package "Offers Context" as offers <<Bounded Context>> BOUNDED_CONTEXT_BG_COLOR {
+  [Offer Management]
+  [Premium Calculation]
+}
+
+package "Policies Context" as policies <<Bounded Context>> BOUNDED_CONTEXT_BG_COLOR {
+  [Policy Management]
+  [Policy Lifecycle]
+}
+
+package "Claims Context" as claims <<Bounded Context>> BOUNDED_CONTEXT_BG_COLOR {
+  [Claim Processing]
+  [Payment Management]
+  [Billing]
+}
+
+' External Systems
+package "External Systems" {
+  [Customer Database]
+  [Payment Gateway]
+  [Document Storage]
+}
+
+' Relationships
+offers --> policies : "Conformist\nOffer → Policy"
+policies --> claims : "Customer/Supplier\nPolicy → Claim"
+claims --> [Payment Gateway] : "Anti-Corruption Layer"
+offers --> [Customer Database] : "Shared Kernel"
+policies --> [Customer Database] : "Shared Kernel"
+claims --> [Customer Database] : "Shared Kernel"
+claims --> [Document Storage] : "Published Language"
+
+note right of offers
+  **Offers Context**
+  - Calculate premiums
+  - Manage offer lifecycle
+  - Risk assessment
+end note
+
+note right of policies
+  **Policies Context**
+  - Create from offers
+  - Activate policies
+  - Manage beneficiaries
+end note
+
+note right of claims
+  **Claims Context**
+  - Process claims
+  - Review workflow
+  - Billing calculation
+end note
+
+@enduml
