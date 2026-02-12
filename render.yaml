@@ -45,12 +45,15 @@ services:
         sync: false
     healthCheckPath: /health
 
+  # Redis (as a service)
+  - type: redis
+    name: redis
+    plan: free
+    maxmemoryPolicy: noeviction
+    ipAllowList: []
+
 databases:
   # MongoDB
   - name: mongodb
     databaseName: insurance
-    plan: free
-
-  # Redis
-  - name: redis
     plan: free
