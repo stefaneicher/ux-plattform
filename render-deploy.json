@@ -73,6 +73,14 @@
         }
       ],
       "healthCheckPath": "/health"
+    },
+    {
+      "type": "redis",
+      "name": "redis",
+      "region": "frankfurt",
+      "plan": "starter",
+      "maxmemoryPolicy": "noeviction",
+      "ipAllowList": []
     }
   ],
   "databases": [
