@@ -110,7 +110,7 @@
             justify-content: center;
             transition: background-color 0.2s, transform 0.1s;
             position: relative;
-            overflow: visible;
+            overflow: hidden;
         }
 
         .icon-button:hover {
@@ -153,8 +153,6 @@
             position: absolute;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.6);
-            width: 40px;
-            height: 40px;
             animation: ripple 0.6s ease-out;
             pointer-events: none;
         }
@@ -994,20 +992,17 @@
                     button.classList.remove('animate');
                 }, 600);
             }
-            
-            // Add click handlers for top bar buttons
-            topBarButtons.forEach(button => {
-                button.addEventListener('click', createRipple);
-            });
 
             // Search button functionality
             const searchBtn = document.getElementById('searchBtn');
             if (searchBtn) {
                 searchBtn.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent ripple from interfering
+                    createRipple(e);
                     console.log('Search button clicked - opening search...');
                     // Add your search functionality here
-                    alert('Suchfunktion aktiviert!\n\nHier würde die Suchleiste erscheinen.');
+                    setTimeout(() => {
+                        alert('Suchfunktion aktiviert!\n\nHier würde die Suchleiste erscheinen.');
+                    }, 100);
                 });
             }
 
@@ -1015,10 +1010,12 @@
             const notificationsBtn = document.getElementById('notificationsBtn');
             if (notificationsBtn) {
                 notificationsBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
+                    createRipple(e);
                     console.log('Notifications button clicked - showing notifications...');
                     // Add your notifications functionality here
-                    alert('Benachrichtigungen\n\n• 3 neue Nachrichten\n• 1 ausstehende Genehmigung\n• System-Update verfügbar');
+                    setTimeout(() => {
+                        alert('Benachrichtigungen\n\n• 3 neue Nachrichten\n• 1 ausstehende Genehmigung\n• System-Update verfügbar');
+                    }, 100);
                 });
             }
 
@@ -1026,10 +1023,12 @@
             const helpBtn = document.getElementById('helpBtn');
             if (helpBtn) {
                 helpBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
+                    createRipple(e);
                     console.log('Help button clicked - opening help...');
                     // Add your help functionality here
-                    alert('Hilfe & Support\n\nHier finden Sie:\n• Benutzerhandbuch\n• FAQs\n• Kontakt zum Support');
+                    setTimeout(() => {
+                        alert('Hilfe & Support\n\nHier finden Sie:\n• Benutzerhandbuch\n• FAQs\n• Kontakt zum Support');
+                    }, 100);
                 });
             }
 
@@ -1037,10 +1036,20 @@
             const profileBtn = document.getElementById('profileBtn');
             if (profileBtn) {
                 profileBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
+                    createRipple(e);
                     console.log('Profile button clicked - opening profile menu...');
                     // Add your profile functionality here
-                    alert('Benutzer-Profil\n\nOptionen:\n• Mein Profil\n• Einstellungen\n• Abmelden');
+                    setTimeout(() => {
+                        alert('Benutzer-Profil\n\nOptionen:\n• Mein Profil\n• Einstellungen\n• Abmelden');
+                    }, 100);
+                });
+            }
+
+            // Menu button also gets ripple effect
+            if (menuBtn) {
+                const originalMenuHandler = menuBtn.onclick;
+                menuBtn.addEventListener('click', function(e) {
+                    createRipple(e);
                 });
             }
         });
