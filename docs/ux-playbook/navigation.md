@@ -1,9 +1,9 @@
 # Navigation Map & Informationsarchitektur
 
-## Site Map - CSS Insurance Enterprise Platform
+## Site Map - Insurance Enterprise Platform
 
 ```
-📱 CSS Insurance Platform
+📱 Insurance Platform
 │
 ├── 🏠 Dashboard
 │   ├── KPIs & Metriken
@@ -137,7 +137,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│ [≡] CSS Insurance  [🔍 Global Search...]  [🔔][?][👤] │
+│ [≡] Insurance Platform  [🔍 Global Search...]  [🔔][?][👤] │
 └─────────────────────────────────────────────────────┘
 ```
 

@@ -1,18 +1,18 @@
-# Komponenten-Bibliothek: CSS Insurance Design System
+# Komponenten-Bibliothek: Enterprise UX Design System
 
 ## Übersicht
 
-Die CSS Insurance Komponenten-Bibliothek basiert auf **Angular Material** und erweitert diese mit firmenspezifischen Styling, Patterns und Business-Komponenten.
+Die Enterprise Komponenten-Bibliothek basiert auf **Angular Material** und erweitert diese mit firmenspezifischen Styling, Patterns und Business-Komponenten.
 
 ## Architektur: 3-Layer-System
 
 ```
 ┌─────────────────────────────────────┐
 │  Layer 3: Business Components       │
-│  (css-customer-card, css-timeline)  │
+│  (ux-customer-card, ux-timeline)  │
 ├─────────────────────────────────────┤
-│  Layer 2: CSS Design System         │
-│  (css-button, css-table, css-form)  │
+│  Layer 2: UX Design System         │
+│  (ux-button, ux-table, ux-form)  │
 ├─────────────────────────────────────┤
 │  Layer 1: Angular Material          │
 │  (mat-button, mat-table, mat-form)  │
@@ -63,37 +63,37 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 ---
 
-## Layer 2: CSS Design System Components
+## Layer 2: UX Design System Components
 
-Wrapper-Komponenten mit CSS Insurance Branding und konsistentem Verhalten.
+Wrapper-Komponenten mit enterprise branding und konsistentem Verhalten.
 
 ### Button Components
 
-#### css-button
+#### ux-button
 
 Standardisierter Button mit konsistentem Styling.
 
 ```html
 <!-- Primary Button -->
-<css-button color="primary" (click)="save()">
+<ux-button color="primary" (click)="save()">
   Speichern
-</css-button>
+</ux-button>
 
 <!-- Secondary Button -->
-<css-button color="secondary" (click)="cancel()">
+<ux-button color="secondary" (click)="cancel()">
   Abbrechen
-</css-button>
+</ux-button>
 
 <!-- Button mit Icon -->
-<css-button color="primary">
+<ux-button color="primary">
   <mat-icon>add</mat-icon>
   Neuer Kunde
-</css-button>
+</ux-button>
 
 <!-- Disabled Button -->
-<css-button [disabled]="!form.valid">
+<ux-button [disabled]="!form.valid">
   Weiter
-</css-button>
+</ux-button>
 ```
 
 **Props**:
@@ -101,24 +101,24 @@ Standardisierter Button mit konsistentem Styling.
 - `disabled`: boolean
 - `type`: 'button' | 'submit' | 'reset'
 
-#### css-icon-button
+#### ux-icon-button
 
 Icon-only Button für Actions.
 
 ```html
-<css-icon-button aria-label="Bearbeiten" (click)="edit()">
+<ux-icon-button aria-label="Bearbeiten" (click)="edit()">
   <mat-icon>edit</mat-icon>
-</css-icon-button>
+</ux-icon-button>
 ```
 
 ### Form Components
 
-#### css-form-field
+#### ux-form-field
 
 Konsistentes Form Field mit Label, Error Handling und Hint.
 
 ```html
-<css-form-field>
+<ux-form-field>
   <mat-label>E-Mail *</mat-label>
   <input matInput type="email" [formControl]="emailControl" required>
   <mat-hint>Format: name@example.com</mat-hint>
@@ -128,48 +128,48 @@ Konsistentes Form Field mit Label, Error Handling und Hint.
   <mat-error *ngIf="emailControl.hasError('email')">
     Bitte gültige E-Mail eingeben
   </mat-error>
-</css-form-field>
+</ux-form-field>
 ```
 
-#### css-select
+#### ux-select
 
 Dropdown-Auswahl.
 
 ```html
-<css-form-field>
+<ux-form-field>
   <mat-label>Status</mat-label>
   <mat-select [formControl]="statusControl">
     <mat-option value="active">Aktiv</mat-option>
     <mat-option value="inactive">Inaktiv</mat-option>
     <mat-option value="pending">Ausstehend</mat-option>
   </mat-select>
-</css-form-field>
+</ux-form-field>
 ```
 
-#### css-date-picker
+#### ux-date-picker
 
 Datums-Auswahl.
 
 ```html
-<css-form-field>
+<ux-form-field>
   <mat-label>Geburtsdatum</mat-label>
   <input matInput [matDatepicker]="picker" [formControl]="dateControl">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
-</css-form-field>
+</ux-form-field>
 ```
 
-#### css-checkbox
+#### ux-checkbox
 
 Checkbox mit konsistentem Styling.
 
 ```html
-<css-checkbox [formControl]="agreeControl">
+<ux-checkbox [formControl]="agreeControl">
   Ich akzeptiere die Nutzungsbedingungen
-</css-checkbox>
+</ux-checkbox>
 ```
 
-#### css-radio-group
+#### ux-radio-group
 
 Radio Button Group.
 
@@ -184,64 +184,64 @@ Radio Button Group.
 
 ### Layout Components
 
-#### css-card
+#### ux-card
 
 Standardisierte Card-Komponente.
 
 ```html
-<css-card>
-  <css-card-header>
-    <css-card-title>Kundendaten</css-card-title>
-  </css-card-header>
-  <css-card-content>
+<ux-card>
+  <ux-card-header>
+    <ux-card-title>Kundendaten</ux-card-title>
+  </ux-card-header>
+  <ux-card-content>
     <p>Max Mustermann</p>
     <p>Musterstrasse 123</p>
-  </css-card-content>
-  <css-card-actions>
-    <css-button>Bearbeiten</css-button>
-    <css-button color="warn">Löschen</css-button>
-  </css-card-actions>
-</css-card>
+  </ux-card-content>
+  <ux-card-actions>
+    <ux-button>Bearbeiten</ux-button>
+    <ux-button color="warn">Löschen</ux-button>
+  </ux-card-actions>
+</ux-card>
 ```
 
-#### css-page-header
+#### ux-page-header
 
 Wiederverwendbarer Seiten-Header.
 
 ```html
-<css-page-header>
-  <css-breadcrumbs>
+<ux-page-header>
+  <ux-breadcrumbs>
     <a href="/">Home</a>
     <a href="/customers">Kunden</a>
     <span>Müller AG</span>
-  </css-breadcrumbs>
+  </ux-breadcrumbs>
   
-  <css-page-title>
+  <ux-page-title>
     <h1>Müller AG</h1>
-    <css-status-chip status="active">Aktiv</css-status-chip>
-  </css-page-title>
+    <ux-status-chip status="active">Aktiv</ux-status-chip>
+  </ux-page-title>
   
-  <css-page-actions>
-    <css-button color="secondary">
+  <ux-page-actions>
+    <ux-button color="secondary">
       <mat-icon>edit</mat-icon>
       Bearbeiten
-    </css-button>
-    <css-button color="primary">
+    </ux-button>
+    <ux-button color="primary">
       <mat-icon>add</mat-icon>
       Neue Offerte
-    </css-button>
-  </css-page-actions>
-</css-page-header>
+    </ux-button>
+  </ux-page-actions>
+</ux-page-header>
 ```
 
 ### Data Display Components
 
-#### css-table
+#### ux-table
 
 Enterprise Table mit Sorting, Filtering, Pagination.
 
 ```html
-<css-table [dataSource]="dataSource">
+<ux-table [dataSource]="dataSource">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
     <td mat-cell *matCellDef="let row">{{row.name}}</td>
@@ -250,9 +250,9 @@ Enterprise Table mit Sorting, Filtering, Pagination.
   <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
     <td mat-cell *matCellDef="let row">
-      <css-status-chip [status]="row.status">
+      <ux-status-chip [status]="row.status">
         {{row.status}}
-      </css-status-chip>
+      </ux-status-chip>
     </td>
   </ng-container>
   
@@ -282,37 +282,37 @@ Enterprise Table mit Sorting, Filtering, Pagination.
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
       (click)="selectRow(row)"></tr>
-</css-table>
+</ux-table>
 
 <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
 ```
 
-#### css-status-chip
+#### ux-status-chip
 
 Status-Badge mit semantischer Färbung.
 
 ```html
 <!-- Success -->
-<css-status-chip status="success">Aktiv</css-status-chip>
+<ux-status-chip status="success">Aktiv</ux-status-chip>
 
 <!-- Warning -->
-<css-status-chip status="warning">Ausstehend</css-status-chip>
+<ux-status-chip status="warning">Ausstehend</ux-status-chip>
 
 <!-- Error -->
-<css-status-chip status="error">Fehler</css-status-chip>
+<ux-status-chip status="error">Fehler</ux-status-chip>
 
 <!-- Info -->
-<css-status-chip status="info">In Bearbeitung</css-status-chip>
+<ux-status-chip status="info">In Bearbeitung</ux-status-chip>
 ```
 
 ### Navigation Components
 
-#### css-tabs
+#### ux-tabs
 
 Tab-Navigation für Detail-Seiten.
 
 ```html
-<css-tabs>
+<ux-tabs>
   <mat-tab label="Übersicht">
     <ng-template matTabContent>
       <!-- Tab Content -->
@@ -330,15 +330,15 @@ Tab-Navigation für Detail-Seiten.
       <!-- Tab Content -->
     </ng-template>
   </mat-tab>
-</css-tabs>
+</ux-tabs>
 ```
 
-#### css-stepper
+#### ux-stepper
 
 Wizard/Stepper für mehrstufige Prozesse.
 
 ```html
-<css-stepper>
+<ux-stepper>
   <mat-step label="Kunde auswählen" [stepControl]="customerForm">
     <form [formGroup]="customerForm">
       <!-- Step 1 Content -->
@@ -365,12 +365,12 @@ Wizard/Stepper für mehrstufige Prozesse.
       <button mat-button (click)="submit()">Absenden</button>
     </div>
   </mat-step>
-</css-stepper>
+</ux-stepper>
 ```
 
 ### Feedback Components
 
-#### css-snackbar
+#### ux-snackbar
 
 Toast Notifications.
 
@@ -381,14 +381,14 @@ constructor(private snackBar: MatSnackBar) {}
 showSuccess(message: string) {
   this.snackBar.open(message, 'Schließen', {
     duration: 3000,
-    panelClass: ['css-snackbar-success']
+    panelClass: ['ux-snackbar-success']
   });
 }
 
 showError(message: string) {
   this.snackBar.open(message, 'Schließen', {
     duration: 5000,
-    panelClass: ['css-snackbar-error']
+    panelClass: ['ux-snackbar-error']
   });
 }
 ```
@@ -399,7 +399,7 @@ this.snackBar.showSuccess('Kunde erfolgreich gespeichert');
 this.snackBar.showError('Fehler beim Speichern');
 ```
 
-#### css-dialog
+#### ux-dialog
 
 Standardisierte Dialoge.
 
@@ -440,7 +440,7 @@ openDialog() {
 </mat-dialog-actions>
 ```
 
-#### css-progress
+#### ux-progress
 
 Loading Indicators.
 
@@ -461,74 +461,74 @@ Loading Indicators.
 
 Domänen-spezifische Komponenten für Insurance-Kontext.
 
-### css-customer-card
+### ux-customer-card
 
 Kompakte Kunden-Ansicht.
 
 ```html
-<css-customer-card [customer]="customer">
-  <css-customer-header>
+<ux-customer-card [customer]="customer">
+  <ux-customer-header>
     <h3>{{customer.name}}</h3>
-    <css-status-chip [status]="customer.status">
+    <ux-status-chip [status]="customer.status">
       {{customer.status}}
-    </css-status-chip>
-  </css-customer-header>
+    </ux-status-chip>
+  </ux-customer-header>
   
-  <css-customer-details>
+  <ux-customer-details>
     <p>📧 {{customer.email}}</p>
     <p>📞 {{customer.phone}}</p>
     <p>🏠 {{customer.address}}</p>
-  </css-customer-details>
+  </ux-customer-details>
   
-  <css-customer-actions>
-    <css-button (click)="viewCustomer(customer)">Details</css-button>
-  </css-customer-actions>
-</css-customer-card>
+  <ux-customer-actions>
+    <ux-button (click)="viewCustomer(customer)">Details</ux-button>
+  </ux-customer-actions>
+</ux-customer-card>
 ```
 
-### css-policy-header
+### ux-policy-header
 
 Versicherungs-Header mit Status.
 
 ```html
-<css-policy-header [policy]="policy">
+<ux-policy-header [policy]="policy">
   <div class="policy-number">Police: {{policy.number}}</div>
   <div class="policy-product">{{policy.productName}}</div>
-  <css-status-chip [status]="policy.status">
+  <ux-status-chip [status]="policy.status">
     {{policy.status}}
-  </css-status-chip>
+  </ux-status-chip>
   <div class="policy-dates">
     Laufzeit: {{policy.startDate | date}} - {{policy.endDate | date}}
   </div>
-</css-policy-header>
+</ux-policy-header>
 ```
 
-### css-claim-timeline
+### ux-claim-timeline
 
 Schadens-Historie mit Timeline.
 
 ```html
-<css-claim-timeline [events]="claimEvents">
-  <css-timeline-item *ngFor="let event of claimEvents" [event]="event">
-    <css-timeline-icon [type]="event.type"></css-timeline-icon>
-    <css-timeline-content>
+<ux-claim-timeline [events]="claimEvents">
+  <ux-timeline-item *ngFor="let event of claimEvents" [event]="event">
+    <ux-timeline-icon [type]="event.type"></ux-timeline-icon>
+    <ux-timeline-content>
       <h4>{{event.title}}</h4>
       <p>{{event.description}}</p>
       <small>{{event.date | date:'short'}} - {{event.user}}</small>
-    </css-timeline-content>
-  </css-timeline-item>
-</css-claim-timeline>
+    </ux-timeline-content>
+  </ux-timeline-item>
+</ux-claim-timeline>
 ```
 
-### css-document-viewer
+### ux-document-viewer
 
 Dokumenten-Vorschau mit Actions.
 
 ```html
-<css-document-viewer [document]="document">
-  <css-document-header>
+<ux-document-viewer [document]="document">
+  <ux-document-header>
     <h3>{{document.name}}</h3>
-    <css-document-actions>
+    <ux-document-actions>
       <button mat-icon-button (click)="download()">
         <mat-icon>download</mat-icon>
       </button>
@@ -538,34 +538,34 @@ Dokumenten-Vorschau mit Actions.
       <button mat-icon-button (click)="delete()">
         <mat-icon>delete</mat-icon>
       </button>
-    </css-document-actions>
-  </css-document-header>
+    </ux-document-actions>
+  </ux-document-header>
   
-  <css-document-preview>
+  <ux-document-preview>
     <iframe [src]="document.previewUrl"></iframe>
-  </css-document-preview>
+  </ux-document-preview>
   
-  <css-document-metadata>
+  <ux-document-metadata>
     <p>Typ: {{document.type}}</p>
     <p>Größe: {{document.size | fileSize}}</p>
     <p>Hochgeladen: {{document.uploadDate | date}}</p>
     <p>Von: {{document.uploadedBy}}</p>
-  </css-document-metadata>
-</css-document-viewer>
+  </ux-document-metadata>
+</ux-document-viewer>
 ```
 
-### css-filter-bar
+### ux-filter-bar
 
 Filter-Leiste für Listen.
 
 ```html
-<css-filter-bar>
-  <css-search-field 
+<ux-filter-bar>
+  <ux-search-field 
     placeholder="Suche..." 
     (search)="onSearch($event)">
-  </css-search-field>
+  </ux-search-field>
   
-  <css-filter-chips>
+  <ux-filter-chips>
     <mat-chip-list>
       <mat-chip *ngFor="let filter of activeFilters" 
                 (removed)="removeFilter(filter)">
@@ -573,43 +573,43 @@ Filter-Leiste für Listen.
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
     </mat-chip-list>
-  </css-filter-chips>
+  </ux-filter-chips>
   
-  <css-filter-actions>
+  <ux-filter-actions>
     <button mat-button (click)="clearFilters()">Zurücksetzen</button>
     <button mat-button (click)="saveView()">Ansicht speichern</button>
-  </css-filter-actions>
-</css-filter-bar>
+  </ux-filter-actions>
+</ux-filter-bar>
 ```
 
-### css-entity-header
+### ux-entity-header
 
 Wiederverwendbarer Entity Header für Detail-Seiten.
 
 ```html
-<css-entity-header>
-  <css-entity-identity>
+<ux-entity-header>
+  <ux-entity-identity>
     <h1>{{entity.name}}</h1>
     <p class="entity-id">ID: {{entity.id}}</p>
-  </css-entity-identity>
+  </ux-entity-identity>
   
-  <css-entity-status>
-    <css-status-chip [status]="entity.status">
+  <ux-entity-status>
+    <ux-status-chip [status]="entity.status">
       {{entity.status}}
-    </css-status-chip>
-  </css-entity-status>
+    </ux-status-chip>
+  </ux-entity-status>
   
-  <css-entity-actions>
-    <css-button color="secondary" (click)="edit()">
+  <ux-entity-actions>
+    <ux-button color="secondary" (click)="edit()">
       <mat-icon>edit</mat-icon>
       Bearbeiten
-    </css-button>
-    <css-button color="warn" (click)="delete()">
+    </ux-button>
+    <ux-button color="warn" (click)="delete()">
       <mat-icon>delete</mat-icon>
       Löschen
-    </css-button>
-  </css-entity-actions>
-</css-entity-header>
+    </ux-button>
+  </ux-entity-actions>
+</ux-entity-header>
 ```
 
 ---
@@ -708,13 +708,13 @@ export class CustomerFormComponent implements OnInit {
         next: () => {
           this.snackBar.open('Kunde erfolgreich gespeichert', 'Schließen', {
             duration: 3000,
-            panelClass: ['css-snackbar-success']
+            panelClass: ['ux-snackbar-success']
           });
         },
         error: (error) => {
           this.snackBar.open('Fehler beim Speichern', 'Schließen', {
             duration: 5000,
-            panelClass: ['css-snackbar-error']
+            panelClass: ['ux-snackbar-error']
           });
         }
       });
@@ -726,55 +726,55 @@ export class CustomerFormComponent implements OnInit {
 ```html
 <!-- customer-form.component.html -->
 <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-  <css-card>
-    <css-card-header>
-      <css-card-title>Kundendaten</css-card-title>
-    </css-card-header>
+  <ux-card>
+    <ux-card-header>
+      <ux-card-title>Kundendaten</ux-card-title>
+    </ux-card-header>
     
-    <css-card-content>
+    <ux-card-content>
       <div class="form-grid">
-        <css-form-field>
+        <ux-form-field>
           <mat-label>Name *</mat-label>
           <input matInput formControlName="name" required>
           <mat-error>Name ist erforderlich</mat-error>
-        </css-form-field>
+        </ux-form-field>
         
-        <css-form-field>
+        <ux-form-field>
           <mat-label>E-Mail *</mat-label>
           <input matInput type="email" formControlName="email" required>
           <mat-error>Bitte gültige E-Mail eingeben</mat-error>
-        </css-form-field>
+        </ux-form-field>
         
-        <css-form-field>
+        <ux-form-field>
           <mat-label>Telefon *</mat-label>
           <input matInput formControlName="phone" required>
           <mat-error>Telefon ist erforderlich</mat-error>
-        </css-form-field>
+        </ux-form-field>
         
-        <css-form-field>
+        <ux-form-field>
           <mat-label>Adresse</mat-label>
           <textarea matInput formControlName="address"></textarea>
-        </css-form-field>
+        </ux-form-field>
         
-        <css-form-field>
+        <ux-form-field>
           <mat-label>Status</mat-label>
           <mat-select formControlName="status">
             <mat-option value="active">Aktiv</mat-option>
             <mat-option value="inactive">Inaktiv</mat-option>
           </mat-select>
-        </css-form-field>
+        </ux-form-field>
       </div>
-    </css-card-content>
+    </ux-card-content>
     
-    <css-card-actions>
-      <css-button type="button" color="secondary" routerLink="/customers">
+    <ux-card-actions>
+      <ux-button type="button" color="secondary" routerLink="/customers">
         Abbrechen
-      </css-button>
-      <css-button type="submit" color="primary" [disabled]="!customerForm.valid">
+      </ux-button>
+      <ux-button type="submit" color="primary" [disabled]="!customerForm.valid">
         Speichern
-      </css-button>
-    </css-card-actions>
-  </css-card>
+      </ux-button>
+    </ux-card-actions>
+  </ux-card>
 </form>
 ```
 

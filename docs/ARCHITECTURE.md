@@ -1,4 +1,4 @@
-# CSS Insurance Demo Application - Documentation
+# Insurance Demo Application - Documentation
 
 ## Overview
 
