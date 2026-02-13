@@ -192,13 +192,13 @@ Basis-Komponenten direkt von Material:
 - Data (Table, Paginator, Sort)
 - Overlays (Dialog, Snackbar, Bottom Sheet)
 
-#### Layer 2: CSS Design System Components
+#### Layer 2: UX Design System Components
 Wrapper/standardisierte Versionen:
-- `css-button` - Branded Material Button
-- `css-form-field` - Standardized Input
-- `css-table` - Enterprise Table
-- `css-dialog` - Branded Dialog
-- `css-card` - Standardized Card
+- `ux-button` - Branded Material Button
+- `ux-form-field` - Standardized Input
+- `ux-table` - Enterprise Table
+- `ux-dialog` - Branded Dialog
+- `ux-card` - Standardized Card
 
 **Regel**: Apps nutzen primär Layer 2, nicht direkt Material!
 

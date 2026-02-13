@@ -332,7 +332,7 @@ Google Cloud:          $130+/Monat
 
 **Support:**
 - 💬 GitHub Issues: https://github.com/stefaneicher/ux-platform/issues
-- 📧 Email: ux-platform@css-insurance.ch
+- 📧 Email: support@example.com
 
 ---
 

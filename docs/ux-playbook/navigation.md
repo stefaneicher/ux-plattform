@@ -400,7 +400,7 @@ Für häufigste Aktionen auf Mobile:
 ### URL-Struktur
 
 ```
-Basis-URL: https://app.css-insurance.ch
+Basis-URL: https://app.insurance-platform.example
 
 /                           → Dashboard
 /customers                  → Kunden-Liste

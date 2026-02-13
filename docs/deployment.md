@@ -201,16 +201,16 @@ npm publish --access public
 
 **Consumers install:**
 ```bash
-npm install @css-insurance/ux-platform
+npm install @enterprise-ux/platform
 ```
 
 **Usage:**
 ```javascript
 // Import tokens
-import { designTokens } from '@css-insurance/ux-platform/dist/tokens';
+import { designTokens } from '@enterprise-ux/platform/dist/tokens';
 
 // Or import CSS
-import '@css-insurance/ux-platform/dist/tokens.css';
+import '@enterprise-ux/platform/dist/tokens.css';
 ```
 
 ### 2. Git Submodule
