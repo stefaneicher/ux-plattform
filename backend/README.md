@@ -2,6 +2,16 @@
 
 NestJS backend for the Insurance demo application with Domain-Driven Design (DDD) architecture.
 
+## 📚 API Documentation
+
+**Interactive API Documentation with Swagger/OpenAPI is available!**
+
+After starting the backend, open:
+- **Swagger UI**: http://localhost:3000/api-docs
+- **OpenAPI JSON**: http://localhost:3000/api-docs-json
+
+For detailed information, see [OPENAPI_GUIDE.md](./OPENAPI_GUIDE.md)
+
 ## Architecture
 
 This backend implements three bounded contexts:

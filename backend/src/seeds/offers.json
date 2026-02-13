@@ -1,0 +1,75 @@
+[
+  {
+    "customerId": "CUST-001",
+    "customerName": "Müller AG",
+    "insuranceType": "Hausrat Komfort",
+    "coverageAmount": 75000,
+    "deductible": 200,
+    "calculatedPremium": 79.00,
+    "riskFactor": 1.2,
+    "status": "DRAFT",
+    "validUntil": "2026-03-14T00:00:00.000Z",
+    "notes": "Hausrat Komfort mit Fahrlässigkeitsschutz"
+  },
+  {
+    "customerId": "CUST-002",
+    "customerName": "Schmidt GmbH",
+    "insuranceType": "Auto Vollkasko",
+    "coverageAmount": 45000,
+    "deductible": 1000,
+    "calculatedPremium": 129.00,
+    "riskFactor": 1.5,
+    "status": "UNDER_REVIEW",
+    "validUntil": "2026-03-13T00:00:00.000Z",
+    "notes": "Auto Vollkasko mit Pannenhilfe und Bonus-Schutz"
+  },
+  {
+    "customerId": "CUST-003",
+    "customerName": "Weber & Co",
+    "insuranceType": "Gebäude Premium",
+    "coverageAmount": 750000,
+    "deductible": 500,
+    "calculatedPremium": 189.00,
+    "riskFactor": 1.1,
+    "status": "ACCEPTED",
+    "validUntil": "2026-03-12T00:00:00.000Z",
+    "notes": "Gebäudeversicherung Premium mit umfassendem Schutz"
+  },
+  {
+    "customerId": "CUST-004",
+    "customerName": "Fischer KG",
+    "insuranceType": "Leben Basis",
+    "coverageAmount": 250000,
+    "deductible": 0,
+    "calculatedPremium": 45.00,
+    "riskFactor": 0.8,
+    "status": "ACCEPTED",
+    "validUntil": "2026-03-11T00:00:00.000Z",
+    "notes": "Lebensversicherung Basis mit 5-jähriger Laufzeit"
+  },
+  {
+    "customerId": "CUST-005",
+    "customerName": "Becker Industries",
+    "insuranceType": "Hausrat Basis",
+    "coverageAmount": 50000,
+    "deductible": 300,
+    "calculatedPremium": 12.50,
+    "riskFactor": 1.0,
+    "status": "DRAFT",
+    "validUntil": "2026-03-20T00:00:00.000Z",
+    "notes": "Hausrat Basisschutz"
+  },
+  {
+    "customerId": "CUST-006",
+    "customerName": "Schneider & Partner",
+    "insuranceType": "Auto Teilkasko",
+    "coverageAmount": 28000,
+    "deductible": 500,
+    "calculatedPremium": 89.00,
+    "riskFactor": 1.3,
+    "status": "UNDER_REVIEW",
+    "validUntil": "2026-03-18T00:00:00.000Z",
+    "notes": "Auto Teilkasko mit Diebstahlschutz"
+  }
+]
+

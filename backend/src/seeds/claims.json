@@ -1,0 +1,81 @@
+[
+  {
+    "claimNumber": "CLM-2026-0234",
+    "policyId": "POL-2026-001",
+    "policyNumber": "POL-2026-001",
+    "customerId": "CUST-003",
+    "customerName": "Weber & Co",
+    "claimType": "Wasserschaden",
+    "claimAmount": 8500.00,
+    "approvedAmount": 0,
+    "status": "SUBMITTED",
+    "incidentDate": "2026-02-11T00:00:00.000Z",
+    "description": "Wasserschaden durch Rohrbruch im Keller. Mehrere Räume betroffen."
+  },
+  {
+    "claimNumber": "CLM-2026-0233",
+    "policyId": "POL-2026-004",
+    "policyNumber": "POL-2026-004",
+    "customerId": "CUST-001",
+    "customerName": "Müller AG",
+    "claimType": "Einbruch",
+    "claimAmount": 3200.00,
+    "approvedAmount": 2800.00,
+    "status": "APPROVED",
+    "incidentDate": "2026-02-08T00:00:00.000Z",
+    "description": "Einbruchdiebstahl - Elektronikgeräte und Schmuck entwendet"
+  },
+  {
+    "claimNumber": "CLM-2026-0232",
+    "policyId": "POL-2026-003",
+    "policyNumber": "POL-2026-003",
+    "customerId": "CUST-002",
+    "customerName": "Schmidt GmbH",
+    "claimType": "Unfallschaden",
+    "claimAmount": 12500.00,
+    "approvedAmount": 12500.00,
+    "status": "PAID",
+    "incidentDate": "2026-01-28T00:00:00.000Z",
+    "description": "Kollisionsschaden auf der Autobahn. Frontschaden am Fahrzeug."
+  },
+  {
+    "claimNumber": "CLM-2026-0231",
+    "policyId": "POL-2026-004",
+    "policyNumber": "POL-2026-004",
+    "customerId": "CUST-001",
+    "customerName": "Müller AG",
+    "claimType": "Brandschaden",
+    "claimAmount": 15000.00,
+    "approvedAmount": 13500.00,
+    "status": "UNDER_REVIEW",
+    "incidentDate": "2026-01-20T00:00:00.000Z",
+    "description": "Brandschaden in der Küche durch defekte Elektrogeräte"
+  },
+  {
+    "claimNumber": "CLM-2026-0230",
+    "policyId": "POL-2025-098",
+    "policyNumber": "POL-2025-098",
+    "customerId": "CUST-007",
+    "customerName": "Hoffmann Consulting",
+    "claimType": "Haftpflichtschaden",
+    "claimAmount": 25000.00,
+    "approvedAmount": 0,
+    "status": "REJECTED",
+    "incidentDate": "2026-01-15T00:00:00.000Z",
+    "description": "Haftpflichtanspruch wegen Beratungsfehler - außerhalb des Deckungsumfangs"
+  },
+  {
+    "claimNumber": "CLM-2025-0891",
+    "policyId": "POL-2026-001",
+    "policyNumber": "POL-2026-001",
+    "customerId": "CUST-003",
+    "customerName": "Weber & Co",
+    "claimType": "Sturmschaden",
+    "claimAmount": 4200.00,
+    "approvedAmount": 4200.00,
+    "status": "CLOSED",
+    "incidentDate": "2025-12-28T00:00:00.000Z",
+    "description": "Sturmschaden am Dach - Ziegel beschädigt, Reparatur abgeschlossen"
+  }
+]
+

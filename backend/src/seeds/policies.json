@@ -1,0 +1,68 @@
+[
+  {
+    "policyNumber": "POL-2026-001",
+    "customerId": "CUST-003",
+    "customerName": "Weber & Co",
+    "insuranceType": "Gebäude Premium",
+    "coverageAmount": 750000,
+    "premium": 189.00,
+    "deductible": 500,
+    "status": "ACTIVE",
+    "paymentFrequency": "MONTHLY",
+    "startDate": "2026-02-10T00:00:00.000Z",
+    "endDate": "2027-02-09T23:59:59.999Z"
+  },
+  {
+    "policyNumber": "POL-2026-002",
+    "customerId": "CUST-004",
+    "customerName": "Fischer KG",
+    "insuranceType": "Leben Basis",
+    "coverageAmount": 250000,
+    "premium": 45.00,
+    "deductible": 0,
+    "status": "ACTIVE",
+    "paymentFrequency": "MONTHLY",
+    "startDate": "2026-02-09T00:00:00.000Z",
+    "endDate": "2031-02-08T23:59:59.999Z"
+  },
+  {
+    "policyNumber": "POL-2026-003",
+    "customerId": "CUST-002",
+    "customerName": "Schmidt GmbH",
+    "insuranceType": "Auto Vollkasko",
+    "coverageAmount": 45000,
+    "premium": 129.00,
+    "deductible": 1000,
+    "status": "PENDING",
+    "paymentFrequency": "MONTHLY",
+    "startDate": "2026-03-01T00:00:00.000Z",
+    "endDate": "2027-02-28T23:59:59.999Z"
+  },
+  {
+    "policyNumber": "POL-2026-004",
+    "customerId": "CUST-001",
+    "customerName": "Müller AG",
+    "insuranceType": "Hausrat Komfort",
+    "coverageAmount": 75000,
+    "premium": 79.00,
+    "deductible": 200,
+    "status": "ACTIVE",
+    "paymentFrequency": "MONTHLY",
+    "startDate": "2026-01-15T00:00:00.000Z",
+    "endDate": "2027-01-14T23:59:59.999Z"
+  },
+  {
+    "policyNumber": "POL-2025-098",
+    "customerId": "CUST-007",
+    "customerName": "Hoffmann Consulting",
+    "insuranceType": "Haftpflicht Business",
+    "coverageAmount": 1000000,
+    "premium": 215.00,
+    "deductible": 1000,
+    "status": "ACTIVE",
+    "paymentFrequency": "QUARTERLY",
+    "startDate": "2025-11-01T00:00:00.000Z",
+    "endDate": "2026-10-31T23:59:59.999Z"
+  }
+]
+

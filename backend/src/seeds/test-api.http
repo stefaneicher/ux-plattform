@@ -1,0 +1,192 @@
+### CSS Insurance Platform - Test Data API Requests
+###
+### Diese Datei kann mit VSCode REST Client Extension verwendet werden
+### oder als Vorlage für Postman/Insomnia
+
+@baseUrl = http://localhost:3000/api
+
+### Health Check
+GET {{baseUrl}}/health
+
+### ===========================
+### OFFERS
+### ===========================
+
+### Get all offers
+GET {{baseUrl}}/offers
+
+### Create Offer - Hausrat Komfort
+POST {{baseUrl}}/offers
+Content-Type: application/json
+
+{
+  "customerId": "CUST-001",
+  "customerName": "Müller AG",
+  "insuranceType": "Hausrat Komfort",
+  "coverageAmount": 75000,
+  "deductible": 200,
+  "calculatedPremium": 79.00,
+  "riskFactor": 1.2,
+  "status": "DRAFT",
+  "validUntil": "2026-03-14T00:00:00.000Z",
+  "notes": "Hausrat Komfort mit Fahrlässigkeitsschutz"
+}
+
+### Create Offer - Auto Vollkasko
+POST {{baseUrl}}/offers
+Content-Type: application/json
+
+{
+  "customerId": "CUST-002",
+  "customerName": "Schmidt GmbH",
+  "insuranceType": "Auto Vollkasko",
+  "coverageAmount": 45000,
+  "deductible": 1000,
+  "calculatedPremium": 129.00,
+  "riskFactor": 1.5,
+  "status": "UNDER_REVIEW",
+  "validUntil": "2026-03-13T00:00:00.000Z",
+  "notes": "Auto Vollkasko mit Pannenhilfe und Bonus-Schutz"
+}
+
+### Get single offer (replace {id} with actual ID)
+GET {{baseUrl}}/offers/{id}
+
+### Calculate premium
+POST {{baseUrl}}/offers/calculate
+Content-Type: application/json
+
+{
+  "insuranceType": "Hausrat",
+  "coverageAmount": 50000,
+  "deductible": 200
+}
+
+### ===========================
+### POLICIES
+### ===========================
+
+### Get all policies
+GET {{baseUrl}}/policies
+
+### Create Policy - Gebäude Premium
+POST {{baseUrl}}/policies
+Content-Type: application/json
+
+{
+  "policyNumber": "POL-2026-001",
+  "customerId": "CUST-003",
+  "customerName": "Weber & Co",
+  "insuranceType": "Gebäude Premium",
+  "coverageAmount": 750000,
+  "premium": 189.00,
+  "deductible": 500,
+  "status": "ACTIVE",
+  "paymentFrequency": "MONTHLY",
+  "startDate": "2026-02-10T00:00:00.000Z",
+  "endDate": "2027-02-09T23:59:59.999Z"
+}
+
+### Get single policy (replace {id} with actual ID)
+GET {{baseUrl}}/policies/{id}
+
+### Activate policy (replace {id} with actual ID)
+POST {{baseUrl}}/policies/{id}/activate
+
+### Cancel policy (replace {id} with actual ID)
+POST {{baseUrl}}/policies/{id}/cancel
+Content-Type: application/json
+
+{
+  "reason": "Kunde hat gekündigt"
+}
+
+### ===========================
+### CLAIMS
+### ===========================
+
+### Get all claims
+GET {{baseUrl}}/claims
+
+### Create Claim - Wasserschaden
+POST {{baseUrl}}/claims
+Content-Type: application/json
+
+{
+  "claimNumber": "CLM-2026-0234",
+  "policyId": "POL-2026-001",
+  "policyNumber": "POL-2026-001",
+  "customerId": "CUST-003",
+  "customerName": "Weber & Co",
+  "claimType": "Wasserschaden",
+  "claimAmount": 8500.00,
+  "approvedAmount": 0,
+  "status": "SUBMITTED",
+  "incidentDate": "2026-02-11T00:00:00.000Z",
+  "description": "Wasserschaden durch Rohrbruch im Keller. Mehrere Räume betroffen."
+}
+
+### Get single claim (replace {id} with actual ID)
+GET {{baseUrl}}/claims/{id}
+
+### Start review (replace {id} with actual ID)
+POST {{baseUrl}}/claims/{id}/review/start
+
+### Review claim - Approve (replace {id} with actual ID)
+POST {{baseUrl}}/claims/{id}/review
+Content-Type: application/json
+
+{
+  "decision": "APPROVED",
+  "approvedAmount": 8000.00
+}
+
+### Review claim - Reject (replace {id} with actual ID)
+POST {{baseUrl}}/claims/{id}/review
+Content-Type: application/json
+
+{
+  "decision": "REJECTED"
+}
+
+### Mark as paid (replace {id} with actual ID)
+POST {{baseUrl}}/claims/{id}/pay
+
+### ===========================
+### BULK OPERATIONS
+### ===========================
+
+### Create multiple offers
+POST {{baseUrl}}/offers
+Content-Type: application/json
+
+{
+  "customerId": "CUST-005",
+  "customerName": "Becker Industries",
+  "insuranceType": "Hausrat Basis",
+  "coverageAmount": 50000,
+  "deductible": 300,
+  "calculatedPremium": 12.50,
+  "riskFactor": 1.0,
+  "status": "DRAFT",
+  "validUntil": "2026-03-20T00:00:00.000Z",
+  "notes": "Hausrat Basisschutz"
+}
+
+###
+POST {{baseUrl}}/offers
+Content-Type: application/json
+
+{
+  "customerId": "CUST-006",
+  "customerName": "Schneider & Partner",
+  "insuranceType": "Auto Teilkasko",
+  "coverageAmount": 28000,
+  "deductible": 500,
+  "calculatedPremium": 89.00,
+  "riskFactor": 1.3,
+  "status": "UNDER_REVIEW",
+  "validUntil": "2026-03-18T00:00:00.000Z",
+  "notes": "Auto Teilkasko mit Diebstahlschutz"
+}
+
