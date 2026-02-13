@@ -1,4 +1,4 @@
-# Enterprise UX Plattform - CSS Insurance
+# Enterprise UX Plattform
 
 [![CI](https://github.com/stefaneicher/ux-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/stefaneicher/ux-platform/actions/workflows/ci.yml)
 [![Deploy Storybook](https://github.com/stefaneicher/ux-platform/actions/workflows/deploy.yml/badge.svg)](https://github.com/stefaneicher/ux-platform/actions/workflows/deploy.yml)
@@ -247,7 +247,7 @@ Vollständige Informationsarchitektur und Navigation-Patterns:
 🗺️ **[Navigation Map öffnen](./docs/ux-playbook/navigation.md)**
 
 **Inhalte:**
-- Komplette Site Map für CSS Insurance Platform
+- Komplette Site Map für Insurance Platform
 - Navigation Patterns (Global, Primary, Secondary, Tertiary)
 - User Flows (Offerte erstellen, Schaden erfassen, Kunde bearbeiten)
 - Mobile Navigation (Bottom Nav, Swipe Gestures)
@@ -518,7 +518,7 @@ docker-compose up -d
 - **📖 Dokumentation**: [UX Playbook](./docs/ux-playbook/README.md)
 - **🐛 Issues**: [GitHub Issues](https://github.com/stefaneicher/ux-platform/issues)
 - **💬 Diskussionen**: [GitHub Discussions](https://github.com/stefaneicher/ux-platform/discussions)
-- **📧 Email**: ux-platform@css-insurance.ch
+- **📧 Email**: support@example.com
 
 ### Häufige Fragen
 
@@ -538,7 +538,7 @@ Dieses Projekt ist unter der [MIT License](./LICENSE) lizenziert.
 ```
 MIT License
 
-Copyright (c) 2026 CSS Insurance
+Copyright (c) 2026 Enterprise UX Platform Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -555,7 +555,7 @@ copies or substantial portions of the Software.
 
 ### Team
 
-- **UX Design**: CSS Insurance UX Team
+- **UX Design**: Enterprise UX Team
 - **Frontend Architecture**: Enterprise Architecture Team
 - **Development**: Contributing Developers
 
@@ -572,4 +572,4 @@ copies or substantial portions of the Software.
 **Letzte Aktualisierung**: 12. Februar 2026  
 **Status**: ✅ Production Ready (Tokens & Dokumentation)
 
-Built with ❤️ für CSS Insurance by GitHub Copilot
+Built with ❤️ by GitHub Copilot

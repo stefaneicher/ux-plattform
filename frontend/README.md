@@ -1,6 +1,6 @@
-# CSS Insurance Frontend
+# Insurance Platform Frontend
 
-Angular-based frontend application for the CSS Insurance demo.
+Angular-based frontend application for the Insurance demo.
 
 ## Features
 

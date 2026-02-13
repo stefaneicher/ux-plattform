@@ -83,7 +83,7 @@ console.log(primaryColor); // "#0066CC"
 }
 
 // component.ts
-import { designTokens } from '@css-insurance/ux-platform/dist/tokens';
+import { designTokens } from '@enterprise-ux/platform/dist/tokens';
 ```
 
 ## 🔧 Development Workflow

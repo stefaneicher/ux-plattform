@@ -1,6 +1,6 @@
-# CSS Insurance Backend
+# Insurance Platform Backend
 
-NestJS backend for the CSS Insurance demo application with Domain-Driven Design (DDD) architecture.
+NestJS backend for the Insurance demo application with Domain-Driven Design (DDD) architecture.
 
 ## Architecture
 
